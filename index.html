@@ -83,12 +83,22 @@
       background: #333;
     }
 
-    /* Logo styling: invert to show white on black background if logos are dark */
+    /* Default logo styling (inverted) */
     .logo {
       width: 20px;
       height: auto;
       margin-right: 0.5rem;
-      filter: invert(1);
+      filter: invert(1); /* invert by default */
+    }
+
+    /* For logos that should keep their original color */
+    .logo-original {
+      filter: none !important;
+    }
+
+    /* For logos that should be slightly bigger */
+    .logo-bigger {
+      width: 24px !important; 
     }
 
     footer {
@@ -119,17 +129,23 @@
   </header>
 
   <div class="buttons">
-    <!-- Replace # with your actual links. 
-         Ensure the logo images are in assets/ and have transparent backgrounds. -->
+    <!-- Replace # with your actual links -->
+    <!-- ArXiv: Original color (no invert) -->
     <a class="btn-link" href="#" target="_blank">
-      <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo">Paper
+      <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo logo-original">Paper
     </a>
+
+    <!-- GitHub: Slightly bigger, keep the inverted style for a black/white look -->
     <a class="btn-link" href="#" target="_blank">
-      <img src="assets/github-logo.png" alt="GitHub Logo" class="logo">Code
+      <img src="assets/github-logo.png" alt="GitHub Logo" class="logo logo-bigger">Code
     </a>
+
+    <!-- Hugging Face: Original color + slightly bigger -->
     <a class="btn-link" href="#" target="_blank">
-      <img src="assets/huggingface-logo.png" alt="Hugging Face Logo" class="logo">HuggingFace
+      <img src="assets/huggingface-logo.png" alt="Hugging Face Logo" class="logo logo-original logo-bigger">HuggingFace
     </a>
+
+    <!-- Data: Default size, inverted style (adjust as needed) -->
     <a class="btn-link" href="#" target="_blank">
       <img src="assets/data-logo.png" alt="Data Logo" class="logo">Data
     </a>
