@@ -162,7 +162,9 @@
       line-height: 1rem;
       padding-right: 0.25rem;
       box-sizing: border-box;
+      position: relative;
     }
+    /* Numeric label inside the bar */
     .progress-bar span {
       position: absolute;
       top: 0;
@@ -191,6 +193,7 @@
       padding: 0 1rem;
       box-sizing: border-box;
     }
+    /* Each video has loop so it replays automatically */
     .slide video {
       width: 48%;
       border-radius: 0.5rem;
@@ -220,6 +223,7 @@
       right: 10px;
     }
 
+    /* Footer */
     footer {
       margin: 2rem 0;
       color: #999;
@@ -290,7 +294,7 @@
   </div>
 
   <!-- Leaderboard Section -->
-  <!-- Sorted from best to worst model, with numeric labels in the progress bar -->
+  <!-- Sorted from best to worst model, showing numeric labels in the progress bar -->
   <div class="leaderboard">
     <h2>Leaderboard</h2>
     <table class="leaderboard-table">
@@ -370,20 +374,20 @@
 
     <!-- Slides Container -->
     <div class="slides-container" id="slidesContainer">
-      <!-- Slide 1 with two videos side by side -->
+      <!-- Slide 1 with two videos side by side (loop added) -->
       <div class="slide">
-        <video src="assets/sample1a.mp4" controls muted></video>
-        <video src="assets/sample1b.mp4" controls muted></video>
+        <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
+        <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
       </div>
-      <!-- Slide 2 with two videos side by side -->
+      <!-- Slide 2 -->
       <div class="slide">
-        <video src="assets/sample2a.mp4" controls muted></video>
-        <video src="assets/sample2b.mp4" controls muted></video>
+        <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
+        <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
       </div>
-      <!-- Slide 3 with two videos side by side (add more slides as needed) -->
+      <!-- Slide 3 (add more slides as needed) -->
       <div class="slide">
-        <video src="assets/sample3a.mp4" controls muted></video>
-        <video src="assets/sample3b.mp4" controls muted></video>
+        <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
+        <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
       </div>
     </div>
 
