@@ -193,10 +193,23 @@
       padding: 0 1rem;
       box-sizing: border-box;
     }
-    /* Each video has loop so it replays automatically */
-    .slide video {
+
+    /* Each video is wrapped in a "frame" so we can add a caption below it */
+    .frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 48%;
+    }
+    .frame video {
+      width: 100%;
       border-radius: 0.5rem;
+    }
+    .caption {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.25rem;
+      text-align: center;
     }
 
     /* Arrows */
@@ -376,18 +389,40 @@
     <div class="slides-container" id="slidesContainer">
       <!-- Slide 1 with two videos side by side (loop added) -->
       <div class="slide">
-        <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
-        <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
+        <!-- Left (Real) -->
+        <div class="frame">
+          <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
+          <div class="caption">Left: Real test frames</div>
+        </div>
+        <!-- Right (Pika 1.0) -->
+        <div class="frame">
+          <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
+          <div class="caption">Right: Pika 1.0</div>
+        </div>
       </div>
-      <!-- Slide 2 -->
+
+      <!-- Slide 2 with a different model name -->
       <div class="slide">
-        <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
-        <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
+        <div class="frame">
+          <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
+          <div class="caption">Left: Real test frames</div>
+        </div>
+        <div class="frame">
+          <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
+          <div class="caption">Right: VideoPoet (multiframe)</div>
+        </div>
       </div>
-      <!-- Slide 3 (add more slides as needed) -->
+
+      <!-- Slide 3 with another model name -->
       <div class="slide">
-        <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
-        <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
+        <div class="frame">
+          <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
+          <div class="caption">Left: Real test frames</div>
+        </div>
+        <div class="frame">
+          <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
+          <div class="caption">Right: Runway Gen 3</div>
+        </div>
       </div>
     </div>
 
