@@ -193,7 +193,6 @@
       padding: 0 1rem;
       box-sizing: border-box;
     }
-
     /* Each video is wrapped in a "frame" so we can add a caption below it */
     .frame {
       display: flex;
@@ -307,7 +306,7 @@
   </div>
 
   <!-- Leaderboard Section -->
-  <!-- Sorted from best to worst model, showing numeric labels in the progress bar -->
+  <!-- Sorted by Physics-IQ score (descending), excluding the Physical Variance row -->
   <div class="leaderboard">
     <h2>Leaderboard</h2>
     <table class="leaderboard-table">
@@ -318,57 +317,90 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Model 5 (Top) -->
+        <!-- 1) VideoPoet (multiframe): 20.7 -->
         <tr>
-          <td>Model 5 <span style="color:gold;">&#x1F3C6;</span></td>
+          <td>VideoPoet (multiframe)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 25%;">
-                <span>25%</span>
+              <div class="progress-bar" style="width: 20.7%;">
+                <span>20.7%</span>
               </div>
             </div>
           </td>
         </tr>
-        <!-- Model 4 -->
+        <!-- 2) Runway Gen 3 (i2v): 16.2 -->
         <tr>
-          <td>Model 4</td>
+          <td>Runway Gen 3 (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 20%;">
-                <span>20%</span>
+              <div class="progress-bar" style="width: 16.2%;">
+                <span>16.2%</span>
               </div>
             </div>
           </td>
         </tr>
-        <!-- Model 3 -->
+        <!-- 3) VideoPoet (i2v): 15.7 -->
         <tr>
-          <td>Model 3</td>
+          <td>VideoPoet (i2v)</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 15.7%;">
+                <span>15.7%</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <!-- 4) Stable Video Diffusion (i2v): 15.0 -->
+        <tr>
+          <td>Stable Video Diffusion (i2v)</td>
           <td>
             <div class="progress">
               <div class="progress-bar" style="width: 15%;">
-                <span>15%</span>
+                <span>15.0%</span>
               </div>
             </div>
           </td>
         </tr>
-        <!-- Model 2 -->
+        <!-- 5) Lumiere (multiframe): 11.9 -->
         <tr>
-          <td>Model 2</td>
+          <td>Lumiere (multiframe)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 10%;">
-                <span>10%</span>
+              <div class="progress-bar" style="width: 11.9%;">
+                <span>11.9%</span>
               </div>
             </div>
           </td>
         </tr>
-        <!-- Model 1 (Worst) -->
+        <!-- 6) Pika 1.0 (i2v): 10.9 -->
         <tr>
-          <td>Model 1</td>
+          <td>Pika 1.0 (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 5%;">
-                <span>5%</span>
+              <div class="progress-bar" style="width: 10.9%;">
+                <span>10.9%</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <!-- 7) Sora (i2v): 9.2 -->
+        <tr>
+          <td>Sora (i2v)</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 9.2%;">
+                <span>9.2%</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <!-- 8) Lumiere (i2v): 8.8 -->
+        <tr>
+          <td>Lumiere (i2v)</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 8.8%;">
+                <span>8.8%</span>
               </div>
             </div>
           </td>
@@ -387,21 +419,20 @@
 
     <!-- Slides Container -->
     <div class="slides-container" id="slidesContainer">
-      <!-- Slide 1 with two videos side by side (loop added) -->
+      <!-- Slide 1 (example) -->
       <div class="slide">
-        <!-- Left (Real) -->
         <div class="frame">
           <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
+          <div class="caption">Left: Real test frames</div>
         </div>
-        <!-- Right (Pika 1.0) -->
         <div class="frame">
           <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Pika 1.0</div>
+          <div class="caption">Right: Example Model</div>
         </div>
       </div>
-
-      <!-- Slide 2 with a different model name -->
+      <!-- Add more slides as needed -->
+    </div>
+    <!-- Slide 2 with a different model name -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
@@ -425,7 +456,6 @@
         </div>
       </div>
     </div>
-
     <!-- Right Arrow -->
     <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
   </div>
