@@ -94,21 +94,94 @@
       margin-right: 0.5rem;
       filter: invert(1); /* invert by default for black button */
     }
-
     /* For logos that should keep their original color */
     .logo-original {
       filter: none !important;
     }
-
     /* For logos that should be slightly bigger */
     .logo-bigger {
       width: 24px !important; 
+    }
+
+    /* Abstract section styling */
+    .content-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: left;
+      background: #FFF;
+      padding: 1.5rem;
+      border-radius: 0.25rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+    .content-container h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .content-container p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* Leaderboard styling */
+    .leaderboard {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: center;
+      padding: 1rem;
+    }
+    .leaderboard h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .leaderboard-table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #FFF;
+      border-radius: 0.25rem;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+    .leaderboard-table th,
+    .leaderboard-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .leaderboard-table th {
+      background: #FAFAFA;
+      font-weight: 600;
+    }
+    .leaderboard-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Progress bar styling (optional visual flair) */
+    .progress {
+      width: 100%;
+      background-color: #eee;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      margin: 0.25rem 0;
+    }
+    .progress-bar {
+      height: 1rem;
+      background-color: #5585FF;
+      border-radius: 0.25rem 0 0 0.25rem;
+      text-align: right;
+      color: #FFF;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      padding-right: 0.25rem;
+      box-sizing: border-box;
     }
 
     footer {
       margin: 2rem 0;
       color: #999;
       font-size: 0.9rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -157,6 +230,93 @@
     <a class="btn-link" href="#" target="_blank">
       <img src="assets/data-logo.png" alt="Data Logo" class="logo">Data
     </a>
+  </div>
+
+  <!-- Abstract Section -->
+  <div class="content-container">
+    <h2>Abstract</h2>
+    <p>
+      AI video generation is undergoing a revolution, with quality and realism advancing rapidly.
+      These advances have led to a passionate scientific debate: Do video models learn “world models”
+      that discover laws of physics — or, alternatively, are they merely sophisticated pixel predictors
+      that achieve visual realism without understanding the physical principles of reality?
+    </p>
+    <p>
+      We address this question by developing <strong>Physics-IQ</strong>, a comprehensive benchmark
+      dataset that can only be solved by acquiring a deep understanding of various physical principles,
+      like fluid dynamics, optics, solid mechanics, magnetism and thermodynamics.
+      We find that across a range of current models (Runway, Pika, Lumiere, Stable Video Diffusion, and VideoPoet),
+      physical understanding is severely limited. At the same time, some test cases can already be successfully solved.
+      For instance, fluid dynamics tend to work better than solid mechanics. This indicates that acquiring certain
+      physical principles from observation alone may be possible, but significant challenges remain.
+      While we expect rapid advances ahead, our work demonstrates that visual realism does not imply physical understanding.
+    </p>
+  </div>
+
+  <!-- Leaderboard Section -->
+  <div class="leaderboard">
+    <h2>Leaderboard</h2>
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Physics IQ Score</th>
+          <th>Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Model 1 -->
+        <tr>
+          <td>Model 1</td>
+          <td>5%</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 5%;">5%</div>
+            </div>
+          </td>
+        </tr>
+        <!-- Model 2 -->
+        <tr>
+          <td>Model 2</td>
+          <td>10%</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 10%;">10%</div>
+            </div>
+          </td>
+        </tr>
+        <!-- Model 3 -->
+        <tr>
+          <td>Model 3</td>
+          <td>15%</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 15%;">15%</div>
+            </div>
+          </td>
+        </tr>
+        <!-- Model 4 -->
+        <tr>
+          <td>Model 4</td>
+          <td>20%</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 20%;">20%</div>
+            </div>
+          </td>
+        </tr>
+        <!-- Model 5 (Top) -->
+        <tr>
+          <td>Model 5 <span style="color:gold;">&#x1F3C6;</span></td>
+          <td>25%</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 25%;">25%</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <footer>
