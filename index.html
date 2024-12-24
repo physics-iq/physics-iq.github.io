@@ -1,157 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physics-IQ: Video Understanding Benchmark</title>
+  <title>GIF Comparison Slider</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/twentytwenty.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/2.0.0/jquery.event.move.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/jquery.twentytwenty.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: #2c3e50;
-      color: #fff;
-      padding: 1.5rem 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin: 0.5rem 0 0;
-      font-style: italic;
-    }
-    nav {
-      background: #34495e;
-      padding: 1rem 0;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 2rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    section h2 {
-      font-size: 2rem;
-      border-bottom: 2px solid #34495e;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .video-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-    .video-card {
-      background: #fff;
-      border: 1px solid #ddd;
+    .comparison-container {
+      max-width: 800px;
+      margin: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      flex: 1 1 calc(33% - 1rem);
-      text-align: center;
+      overflow: hidden;
     }
-    .video-card video {
-      width: 100%;
-      height: auto;
+    .twentytwenty-container img, .twentytwenty-container video {
       border-radius: 5px;
-    }
-    .video-card h3 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0 0;
-    }
-    footer {
-      background: #2c3e50;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
-    }
-    footer p {
-      margin: 0;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Physics-IQ</h1>
-    <p>A Comprehensive Video Understanding Benchmark</p>
-  </header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#videos">Videos</a>
-    <a href="#benchmarks">Benchmarks</a>
-    <a href="#team">Team</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <main>
-    <section id="about">
-      <h2>About Physics-IQ</h2>
-      <p>Physics-IQ is a video understanding benchmark designed to evaluate the ability of AI systems to reason about physical interactions and temporal events. This project introduces a novel dataset, evaluation metrics, and tools to facilitate groundbreaking research in video understanding.</p>
-    </section>
-    <section id="videos">
-      <h2>Sample Videos</h2>
-      <div class="video-container">
-        <div class="video-card">
-          <video controls>
-            <source src="sample-video-1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <h3>Sample Video 1</h3>
-          <p>Example showcasing action recognition.</p>
-        </div>
-        <div class="video-card">
-          <video controls>
-            <source src="sample-video-2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <h3>Sample Video 2</h3>
-          <p>Example showcasing temporal segmentation.</p>
-        </div>
-        <div class="video-card">
-          <video controls>
-            <source src="sample-video-3.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <h3>Sample Video 3</h3>
-          <p>Example showcasing multi-view consistency.</p>
-        </div>
-      </div>
-    </section>
-    <section id="benchmarks">
-      <h2>Benchmarks</h2>
-      <p>Physics-IQ provides a comprehensive set of evaluation metrics and baseline models to benchmark AI performance in video understanding tasks. Our benchmark includes action recognition, temporal segmentation, and multi-view consistency evaluation.</p>
-    </section>
-    <section id="team">
-      <h2>Team</h2>
-      <p>Physics-IQ is developed by a team of AI researchers dedicated to advancing video understanding. For more details about our team, visit our <a href="#contact">Contact</a> section.</p>
-    </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>For inquiries or collaboration opportunities, please reach out to:</p>
-      <p><strong>Email:</strong> yourname@example.com</p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2024 Physics-IQ. All rights reserved.</p>
-  </footer>
+
+<h1>GIF Comparison Slider</h1>
+<div class="comparison-container">
+  <div class="twentytwenty-container">
+    <video autoplay loop muted>
+      <source src="example1.gif" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <video autoplay loop muted>
+      <source src="example2.gif" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $(".twentytwenty-container").twentytwenty({
+      default_offset_pct: 0.5, // Start position of the slider bar
+      before_label: "GIF 1", // Label for the left side
+      after_label: "GIF 2"   // Label for the right side
+    });
+  });
+</script>
+
 </body>
 </html>
