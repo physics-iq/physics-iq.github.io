@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Physics IQ Benchmark: Do generative video models learn physical principles from watching videos?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Basic styling inspired by marigoldmonodepth.github.io -->
   <style>
+    /* Basic styling inspired by marigoldmonodepth.github.io */
     body {
       margin: 0;
       padding: 0;
@@ -17,38 +17,53 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    .teaser-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem; /* Soften edges */
+    }
+
     header {
       background: #FAFAFA;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       border-bottom: 1px solid #ddd;
+      margin-bottom: 1rem;
     }
-
     h1 {
       font-size: 2rem;
-      margin: 0 0 1rem;
+      margin: 0 0 0.5rem;
       line-height: 1.2;
     }
-
     .authors {
       font-size: 1rem;
       color: #555;
       margin-top: 0.5rem;
     }
-
+    .affiliations {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
     .asterisk-note {
       font-style: italic;
       font-size: 0.9rem;
       color: #666;
+      display: block;
+      margin-top: 0.5rem;
     }
 
     .buttons {
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
-
     .btn-link {
       display: inline-block;
       padding: 0.75rem 1.25rem;
@@ -58,21 +73,15 @@
       border-radius: 0.25rem;
       transition: background 0.2s ease-in-out;
     }
-
     .btn-link:hover {
       background: #436adf;
     }
-
-    .teaser-container {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    video {
-      width: 100%;
+    /* Icon styling */
+    .icon {
+      width: 20px;
       height: auto;
-      border: 1px solid #ccc;
+      vertical-align: middle;
+      margin-right: 0.5rem;
     }
 
     footer {
@@ -82,36 +91,42 @@
     }
   </style>
 </head>
-
 <body>
+
+  <!-- Teaser Video at the Top -->
+  <div class="teaser-container">
+    <video src="assets/teaser.mp4" controls autoplay loop muted></video>
+  </div>
+
   <header>
-    <h1>Physics IQ Benchmark: <br/>Do generative video models learn physical principles from watching videos?</h1>
+    <h1>Physics IQ Benchmark:<br>Do generative video models learn physical principles from watching videos?</h1>
     <div class="authors">
-      <strong>Authors:</strong> 
-      Saman Motamed<sup>*</sup> (INSAIT, Sofia University), 
-      Laura Culp (Google DeepMind), 
-      Kevin Swersky (Google DeepMind), 
-      Priyank Jaini (Google DeepMind), 
-      and Robert Geirhos (Google DeepMind).
-      <br/>
-      <span class="asterisk-note">* Work done while at Google DeepMind</span>
+      Saman Motamed<sup>(1,*)</sup>, Laura Culp<sup>(2)</sup>, Kevin Swersky<sup>(2)</sup>, 
+      Priyank Jaini<sup>(2)</sup>, Robert Geirhos<sup>(2)</sup>
     </div>
+    <div class="affiliations">
+      <strong>1:</strong> INSAIT, Sofia University &nbsp;&nbsp;
+      <strong>2:</strong> Google DeepMind
+    </div>
+    <div class="asterisk-note">* Work done while at Google DeepMind</div>
   </header>
 
   <div class="buttons">
-    <!-- Replace # with your actual links -->
-    <a class="btn-link" href="#" target="_blank">ArXiv Paper</a>
-    <a class="btn-link" href="#" target="_blank">GitHub</a>
-    <a class="btn-link" href="#" target="_blank">HuggingFace</a>
-  </div>
-
-  <div class="teaser-container">
-    <!-- Teaser Video -->
-    <video src="assets/teaser.mp4" controls autoplay loop muted></video>
+    <!-- Replace # with your actual links; update icon filenames accordingly -->
+    <a class="btn-link" href="#" target="_blank">
+      <img src="assets/arxiv-icon.png" alt="arXiv" class="icon">ArXiv Paper
+    </a>
+    <a class="btn-link" href="#" target="_blank">
+      <img src="assets/github-icon.png" alt="GitHub" class="icon">GitHub
+    </a>
+    <a class="btn-link" href="#" target="_blank">
+      <img src="assets/huggingface-icon.png" alt="Hugging Face" class="icon">Hugging Face
+    </a>
   </div>
 
   <footer>
     &copy; 2024 Physics IQ Benchmark Project
   </footer>
+
 </body>
 </html>
