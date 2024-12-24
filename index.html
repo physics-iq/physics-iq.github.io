@@ -211,28 +211,29 @@
       text-align: center;
     }
 
-    /* Arrows */
+    /* Arrows: offset further from the videos */
     .arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
-      padding: 0.5rem;
+      padding: 0.75rem;
       cursor: pointer;
       border-radius: 9999px;
       user-select: none;
       font-size: 1.25rem;
       line-height: 1.25rem;
+      z-index: 10; /* ensure arrows appear on top */
     }
     .arrow:hover {
       background: rgba(0, 0, 0, 0.7);
     }
     .arrow-left {
-      left: 10px;
+      left: 30px; /* Moved further from the center */
     }
     .arrow-right {
-      right: 10px;
+      right: 30px; /* Moved further from the center */
     }
 
     /* Footer */
