@@ -143,22 +143,83 @@
       border-bottom: none;
     }
 
-    /* Progress bar styling (no numeric label inside) */
+    /* Progress bar styling (with numeric label) */
     .progress {
       width: 100%;
       background-color: #eee;
       border-radius: 0.25rem;
       overflow: hidden;
       margin: 0.25rem 0;
+      position: relative;
     }
     .progress-bar {
       height: 1rem;
       background-color: #5585FF;
       border-radius: 0.25rem 0 0 0.25rem;
-      /* No text or numeric label here */
+      text-align: right;
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      padding-right: 0.25rem;
+      box-sizing: border-box;
+    }
+    .progress-bar span {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 1rem;
     }
 
-    /* Footer */
+    /* Video Model Samples (carousel) */
+    .video-samples {
+      max-width: 800px;
+      margin: 2rem auto;
+      position: relative; /* to position arrows */
+      overflow: hidden;
+    }
+    .slides-container {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+    .slide video {
+      width: 48%;
+      border-radius: 0.5rem;
+    }
+
+    /* Arrows */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 0.5rem;
+      cursor: pointer;
+      border-radius: 9999px;
+      user-select: none;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+    }
+    .arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
+
     footer {
       margin: 2rem 0;
       color: #999;
@@ -229,40 +290,25 @@
   </div>
 
   <!-- Leaderboard Section -->
+  <!-- Sorted from best to worst model, with numeric labels in the progress bar -->
   <div class="leaderboard">
     <h2>Leaderboard</h2>
     <table class="leaderboard-table">
       <thead>
         <tr>
           <th>Model</th>
-          <th>PhysicsIQ Score</th>
+          <th>Physics IQ Score</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Model 1 -->
+        <!-- Model 5 (Top) -->
         <tr>
-          <td>Model 1</td>
+          <td>Model 5 <span style="color:gold;">&#x1F3C6;</span></td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 5%;"></div>
-            </div>
-          </td>
-        </tr>
-        <!-- Model 2 -->
-        <tr>
-          <td>Model 2</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 10%;"></div>
-            </div>
-          </td>
-        </tr>
-        <!-- Model 3 -->
-        <tr>
-          <td>Model 3</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 15%;"></div>
+              <div class="progress-bar" style="width: 25%;">
+                <span>25%</span>
+              </div>
             </div>
           </td>
         </tr>
@@ -271,16 +317,42 @@
           <td>Model 4</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 20%;"></div>
+              <div class="progress-bar" style="width: 20%;">
+                <span>20%</span>
+              </div>
             </div>
           </td>
         </tr>
-        <!-- Model 5 (Top) -->
+        <!-- Model 3 -->
         <tr>
-          <td>Model 5 <span style="color:gold;">&#x1F3C6;</span></td>
+          <td>Model 3</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 25%;"></div>
+              <div class="progress-bar" style="width: 15%;">
+                <span>15%</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <!-- Model 2 -->
+        <tr>
+          <td>Model 2</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 10%;">
+                <span>10%</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <!-- Model 1 (Worst) -->
+        <tr>
+          <td>Model 1</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: 5%;">
+                <span>5%</span>
+              </div>
             </div>
           </td>
         </tr>
@@ -288,9 +360,68 @@
     </table>
   </div>
 
+  <!-- Video Model Samples -->
+  <div class="section-wrapper">
+    <h2>Video Model Samples</h2>
+  </div>
+  <div class="video-samples">
+    <!-- Left Arrow -->
+    <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
+
+    <!-- Slides Container -->
+    <div class="slides-container" id="slidesContainer">
+      <!-- Slide 1 with two videos side by side -->
+      <div class="slide">
+        <video src="assets/sample1a.mp4" controls muted></video>
+        <video src="assets/sample1b.mp4" controls muted></video>
+      </div>
+      <!-- Slide 2 with two videos side by side -->
+      <div class="slide">
+        <video src="assets/sample2a.mp4" controls muted></video>
+        <video src="assets/sample2b.mp4" controls muted></video>
+      </div>
+      <!-- Slide 3 with two videos side by side (add more slides as needed) -->
+      <div class="slide">
+        <video src="assets/sample3a.mp4" controls muted></video>
+        <video src="assets/sample3b.mp4" controls muted></video>
+      </div>
+    </div>
+
+    <!-- Right Arrow -->
+    <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
+  </div>
+
   <footer>
     &copy; 2024 Physics IQ Benchmark Project
   </footer>
+
+  <!-- Minimal Carousel JavaScript -->
+  <script>
+    const slidesContainer = document.getElementById('slidesContainer');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      // Ensure index is within range
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      if (index < 0) {
+        index = totalSlides - 1;
+      } else if (index >= totalSlides) {
+        index = 0;
+      }
+      currentSlide = index;
+      // Translate the slidesContainer to show the correct slide
+      slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+  </script>
 
 </body>
 </html>
