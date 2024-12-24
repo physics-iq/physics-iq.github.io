@@ -5,12 +5,8 @@
   <title>Physics IQ Benchmark: Do generative video models learn physical principles from watching videos?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Custom Rubber Duck Favicon (32x32), encoded as inline SVG -->
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDY0IDY0Ij48Y2lyY2xlIGN4PSIzMCIgY3k9IjM0IiByPSIxOCIgZmlsbD0iI0ZGRDUwMCIvPjxjaXJjbGUgY3g9IjIzIiBjeT0iMjAiIHI9IjgiIGZpbGw9IiNGRkQ1MDAiLz48cG9seWdvbiBwb2ludHM9IjMwLDIwIDM1LDIyIDMwLDI0IiBmaWxsPSIjRkY5OTAwIi8+PGNpcmNsZSBjeD0iMjciIGN5PSIxOSIgcj0iMSIgZmlsbD0iIzAwMCIvPjwvc3ZnPg=="
-  />
+  <!-- Use your custom duck favicon from assets/duckie.png -->
+  <link rel="icon" type="image/png" href="assets/duckie.png" />
 
   <style>
     /* Basic styling inspired by marigoldmonodepth.github.io */
@@ -96,7 +92,7 @@
       width: 20px;
       height: auto;
       margin-right: 0.5rem;
-      filter: invert(1); /* invert by default */
+      filter: invert(1); /* invert by default for black button */
     }
 
     /* For logos that should keep their original color */
@@ -140,14 +136,14 @@
   </header>
 
   <div class="buttons">
-    <!-- Replace # with your actual links. -->
+    <!-- Replace # with your actual links -->
 
-    <!-- ArXiv (Paper): original color (no invert) -->
+    <!-- ArXiv: original color (no invert) -->
     <a class="btn-link" href="#" target="_blank">
       <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo logo-original">Paper
     </a>
 
-    <!-- GitHub (Code): slightly bigger, keep inverted style if the original logo is dark -->
+    <!-- GitHub: slightly bigger, keep inverted if original logo is black/white -->
     <a class="btn-link" href="#" target="_blank">
       <img src="assets/github-logo.png" alt="GitHub Logo" class="logo logo-bigger">Code
     </a>
@@ -157,7 +153,7 @@
       <img src="assets/huggingface-logo.png" alt="Hugging Face Logo" class="logo logo-original logo-bigger">HuggingFace
     </a>
 
-    <!-- Data: default size, you can remove "filter: invert" if you have a color version -->
+    <!-- Data: default size, invert or not as you prefer -->
     <a class="btn-link" href="#" target="_blank">
       <img src="assets/data-logo.png" alt="Data Logo" class="logo">Data
     </a>
