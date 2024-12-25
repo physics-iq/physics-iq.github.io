@@ -143,7 +143,7 @@
       border-bottom: none;
     }
 
-    /* PROGRESS BAR: thicker + numeric label more to the right */
+    /* PROGRESS BAR: thicker + numeric label moved further right & made black */
     .progress {
       width: 100%;
       background-color: #eee;
@@ -153,13 +153,13 @@
       position: relative;
     }
     .progress-bar {
-      height: 1.5rem; /* 1.5x thicker than before */
+      height: 1.5rem; /* thicker bar */
       background-color: #5585FF;
       border-radius: 0.25rem 0 0 0.25rem;
       text-align: right;
-      color: #fff;
-      font-size: 0.8rem; /* slightly bigger font for clarity */
-      line-height: 1.5rem; /* match the new height for vertical centering */
+      color: #fff; /* color of the bar background */
+      font-size: 0.8rem;
+      line-height: 1.5rem; 
       padding-right: 0.25rem;
       box-sizing: border-box;
       position: relative;
@@ -167,10 +167,10 @@
     .progress-bar span {
       position: absolute;
       top: 0;
-      right: 10px; /* move text further away from the bar edge */
-      color: #fff;
-      font-size: 0.8rem;
-      line-height: 1.5rem;
+      right: 15px; /* further to the right */
+      color: #000; /* black text for better visibility */
+      font-size: 0.6rem; /* smaller font */
+      line-height: 1.5rem; 
     }
 
     /* Video Model Samples (carousel) */
@@ -418,7 +418,7 @@
 
     <!-- Slides Container -->
     <div class="slides-container" id="slidesContainer">
-      <!-- Slide 1 (example) -->
+      <!-- Slide  (example) -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample5a.mp4" controls muted autoplay loop></video>
@@ -429,7 +429,7 @@
           <div class="caption">Sora</div>
         </div>
       </div>
-      
+      <!-- Slide  (example) -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
@@ -473,6 +473,34 @@
           <div class="caption">Stable Video Diffusion</div>
         </div>
       </div>
+      <!-- slide 4 -->
+
+      <div class="slide">
+        <div class="frame">
+          <video src="assets/sample6a.mp4" controls muted autoplay loop></video>
+          <div class="caption">Real test frames</div>
+        </div>
+        <div class="frame">
+          <video src="assets/sample6b.mp4" controls muted autoplay loop></video>
+          <div class="caption">Lumiere (i2v)</div>
+        </div>
+      </div>
+      <!-- slide 4 -->
+      <div class="slide">
+        <div class="frame">
+          <video src="assets/sample7a.mp4" controls muted autoplay loop></video>
+          <div class="caption">Real test frames</div>
+        </div>
+        <div class="frame">
+          <video src="assets/sample7b.mp4" controls muted autoplay loop></video>
+          <div class="caption">VideoPoet (i2v)</div>
+        </div>
+      </div>
+
+
+
+
+      
     </div>
 
     <!-- Right Arrow -->
