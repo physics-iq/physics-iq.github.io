@@ -143,37 +143,35 @@
       border-bottom: none;
     }
 
-    /* PROGRESS BAR: thicker + numeric label moved further right & made black */
+    /* 5% step background & thicker bar, no numeric text in the bar */
     .progress {
       width: 100%;
-      background-color: #eee;
+      /* Create a repeating pattern every 10% that looks like 5% shading + 5% gap */
+      background: repeating-linear-gradient(
+        to right,
+        #eee 0%,
+        #eee 5%,
+        transparent 5%,
+        transparent 10%
+      );
+      background-size: 10% 100%;
       border-radius: 0.25rem;
       overflow: hidden;
       margin: 0.25rem 0;
       position: relative;
+      height: 1.5rem; /* Thicker bar */
     }
     .progress-bar {
-      height: 1.5rem; /* thicker bar */
+      height: 100%;
       background-color: #5585FF;
       border-radius: 0.25rem 0 0 0.25rem;
       text-align: right;
-      color: #fff; /* color of the bar background */
-      font-size: 0.8rem;
-      line-height: 1.5rem; 
-      padding-right: 0.25rem;
       box-sizing: border-box;
       position: relative;
-    }
-    .progress-bar span {
-      position: absolute;
-      top: 0;
-      right: 15px; /* further to the right */
-      color: #000; /* black text for better visibility */
-      font-size: 0.6rem; /* smaller font */
-      line-height: 1.5rem; 
+      /* No text inside the bar */
     }
 
-    /* Video Model Samples (carousel) */
+    /* Arrows, etc., for the carousel */
     .video-samples {
       max-width: 800px;
       margin: 2rem auto;
@@ -192,7 +190,6 @@
       padding: 0 1rem;
       box-sizing: border-box;
     }
-    /* Each video is wrapped in a "frame" so we can add a caption below it */
     .frame {
       display: flex;
       flex-direction: column;
@@ -316,91 +313,76 @@
         </tr>
       </thead>
       <tbody>
-        <!-- 1) VideoPoet (multiframe): 20.7 -->
+        <!-- 1) VideoPoet (multiframe) with trophy -->
         <tr>
-          <td>VideoPoet (multiframe)</td>
+          <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 20.7%;">
-                <span>20.7%</span>
-              </div>
+              <!-- 20.7% width, no numeric text -->
+              <div class="progress-bar" style="width: 20.7%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 2) Runway Gen 3 (i2v): 16.2 -->
+        <!-- 2) Runway Gen 3 (i2v): 16.2% -->
         <tr>
           <td>Runway Gen 3 (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 16.2%;">
-                <span>16.2%</span>
-              </div>
+              <div class="progress-bar" style="width: 16.2%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 3) VideoPoet (i2v): 15.7 -->
+        <!-- 3) VideoPoet (i2v): 15.7% -->
         <tr>
           <td>VideoPoet (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 15.7%;">
-                <span>15.7%</span>
-              </div>
+              <div class="progress-bar" style="width: 15.7%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 4) Stable Video Diffusion (i2v): 15.0 -->
+        <!-- 4) Stable Video Diffusion (i2v): 15.0% -->
         <tr>
           <td>Stable Video Diffusion (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 15%;">
-                <span>15.0%</span>
-              </div>
+              <div class="progress-bar" style="width: 15%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 5) Lumiere (multiframe): 11.9 -->
+        <!-- 5) Lumiere (multiframe): 11.9% -->
         <tr>
           <td>Lumiere (multiframe)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 11.9%;">
-                <span>11.9%</span>
-              </div>
+              <div class="progress-bar" style="width: 11.9%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 6) Pika 1.0 (i2v): 10.9 -->
+        <!-- 6) Pika 1.0 (i2v): 10.9% -->
         <tr>
           <td>Pika 1.0 (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 10.9%;">
-                <span>10.9%</span>
-              </div>
+              <div class="progress-bar" style="width: 10.9%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 7) Sora (i2v): 9.2 -->
+        <!-- 7) Sora (i2v): 9.2% -->
         <tr>
           <td>Sora (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 9.2%;">
-                <span>9.2%</span>
-              </div>
+              <div class="progress-bar" style="width: 9.2%;"></div>
             </div>
           </td>
         </tr>
-        <!-- 8) Lumiere (i2v): 8.8 -->
+        <!-- 8) Lumiere (i2v): 8.8% -->
         <tr>
           <td>Lumiere (i2v)</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width: 8.8%;">
-                <span>8.8%</span>
-              </div>
+              <div class="progress-bar" style="width: 8.8%;"></div>
             </div>
           </td>
         </tr>
@@ -418,7 +400,7 @@
 
     <!-- Slides Container -->
     <div class="slides-container" id="slidesContainer">
-      <!-- Slide 1 (example) -->
+      <!-- Slide 1 -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample5a.mp4" controls muted autoplay loop></video>
@@ -429,7 +411,7 @@
           <div class="caption">Sora</div>
         </div>
       </div>
-      <!-- Slide 2 (example) -->
+      <!-- Slide 2 -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
@@ -462,7 +444,7 @@
           <div class="caption">Runway Gen 3</div>
         </div>
       </div>
-      <!-- slide 5 -->
+      <!-- Slide 5 -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample4a.mp4" controls muted autoplay loop></video>
@@ -473,7 +455,7 @@
           <div class="caption">Stable Video Diffusion</div>
         </div>
       </div>
-      <!-- slide 6 -->
+      <!-- Slide 6 -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample6a.mp4" controls muted autoplay loop></video>
@@ -484,7 +466,7 @@
           <div class="caption">Lumiere (i2v)</div>
         </div>
       </div>
-      <!-- slide 7 -->
+      <!-- Slide 7 -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample7a.mp4" controls muted autoplay loop></video>
@@ -495,7 +477,7 @@
           <div class="caption">VideoPoet (i2v)</div>
         </div>
       </div>
-    <!-- slide 8 -->
+      <!-- Slide 8 -->
       <div class="slide">
         <div class="frame">
           <video src="assets/sample8a.mp4" controls muted autoplay loop></video>
@@ -506,10 +488,6 @@
           <div class="caption">Lumiere (multiframe)</div>
         </div>
       </div>
-
-
-
-      
     </div>
 
     <!-- Right Arrow -->
