@@ -5,45 +5,67 @@
   <title>Physics IQ Benchmark: Do generative video models learn physical principles from watching videos?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Use your custom duck favicon from assets/duckie.png -->
+  <!-- Use your custom duck favicon -->
   <link rel="icon" type="image/png" href="assets/duckie.png" />
 
   <style>
-    /* Very light milk-cream background color */
+    /* Reset default margins/padding */
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%; /* Ensure body can host the pseudo-element background */
+      height: 100%; 
     }
 
+    /*
+     1) Body: we won't color the center here because we want the repeated duckies
+        along the edges. We'll overlay them with a pseudo-element at partial opacity.
+     2) We'll add a .content-wrapper with a background to keep ducks off the center.
+    */
     body {
-      background: #fbf8f2; /* Base background color */
+      position: relative; /* So we can use body::before behind everything */
+      min-height: 100vh;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #333;
       text-align: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      position: relative; /* So we can use body::before absolutely */
-      z-index: 0;
+      background: #fff; /* White behind the ducks, so edges are visible */
     }
 
-    /* The pseudo-element that places your repeated duckie background at 50% opacity */
+    /* 
+     body::before places the repeated duckie
+     image behind everything, partially transparent.
+    */
     body::before {
       content: "";
-      position: fixed; /* or absolute, but fixed keeps it still while scrolling */
-      top: 0;
+      position: fixed;  /* or absolute, but fixed stays in place on scroll */
+      top: 0; 
       left: 0;
       width: 100%;
       height: 100%;
       background: url("assets/duckie.png") repeat center center;
-      /* Adjust background-size if needed, e.g., 200px or 100px for smaller ducks */
-      background-size: 200px auto;
-      opacity: 0.5; /* ~50% transparent */
-      pointer-events: none; /* Let clicks pass through */
-      z-index: -9999; /* Ensure it stays behind everything */
+      background-size: 150px auto; /* Adjust duck size as needed */
+      opacity: 0.5;   /* ~50% transparent */
+      pointer-events: none; /* Don’t block clicks */
+      z-index: -9999;
     }
 
-    /* Teaser container and video */
+    /*
+      The content-wrapper is where all your main site content goes.
+      We give it a max-width and a cream background, so the center
+      area is logo-free. The ducks show only around the edges on bigger screens.
+    */
+    .content-wrapper {
+      max-width: 1200px; /* or 800px, etc. */
+      margin: 0 auto;
+      background: #fbf8f2; /* Very light milk-cream color for main area */
+      min-height: 100vh;   /* So it stretches the full page height */
+      position: relative;  /* Stay above the duck background */
+      z-index: 1;          /* Ensure it's above body::before */
+      box-sizing: border-box;
+    }
+
+    /* Same styling from your existing site but wrapped inside .content-wrapper */
     .teaser-container {
       max-width: 800px;
       margin: 2rem auto;
@@ -52,10 +74,9 @@
     video {
       width: 100%;
       height: auto;
-      border-radius: 0.75rem; /* Soften edges */
+      border-radius: 0.75rem; 
     }
 
-    /* Header styles */
     header {
       padding: 1.5rem 1rem;
       margin-bottom: 1rem;
@@ -83,7 +104,6 @@
       margin-top: 0.5rem;
     }
 
-    /* Buttons container */
     .buttons {
       margin: 1.5rem auto;
       display: flex;
@@ -91,14 +111,13 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
-    /* Ellipsoidal black buttons with white text */
     .btn-link {
       display: inline-flex;
       align-items: center;
       background: #000;
       color: #fff;
       text-decoration: none;
-      border-radius: 9999px; /* Large radius for elliptical shape */
+      border-radius: 9999px;
       padding: 0.5rem 1rem;
       transition: background 0.2s ease-in-out;
       font-weight: 500;
@@ -107,22 +126,19 @@
     .btn-link:hover {
       background: #333;
     }
-
-    /* Logo styling */
     .logo {
       width: 20px;
       height: auto;
       margin-right: 0.5rem;
-      filter: invert(1); /* Invert by default for black button */
+      filter: invert(1);
     }
     .logo-original {
-      filter: none !important; /* Keep original color */
+      filter: none !important;
     }
     .logo-bigger {
-      width: 24px !important; 
+      width: 24px !important;
     }
 
-    /* Abstract section */
     .section-wrapper {
       max-width: 800px;
       margin: 2rem auto;
@@ -139,7 +155,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Leaderboard */
     .leaderboard {
       max-width: 800px;
       margin: 2rem auto;
@@ -158,14 +173,13 @@
       border-bottom: 1px solid #ddd;
     }
     .leaderboard-table th {
-      background: #f2eee8; /* Slightly different shade for table header */
+      background: #f2eee8;
       font-weight: 600;
     }
     .leaderboard-table tr:last-child td {
       border-bottom: none;
     }
 
-    /* 5% step background & thicker bar, no numeric text in the bar */
     .progress {
       width: 100%;
       background: repeating-linear-gradient(
@@ -180,7 +194,7 @@
       overflow: hidden;
       margin: 0.25rem 0;
       position: relative;
-      height: 1.5rem; /* Thicker bar */
+      height: 1.5rem;
     }
     .progress-bar {
       height: 100%;
@@ -191,11 +205,11 @@
       position: relative;
     }
 
-    /* Carousel / Video Model Samples */
+    /* Carousel / Video Samples */
     .video-samples {
       max-width: 800px;
       margin: 2rem auto;
-      position: relative; /* to position arrows */
+      position: relative;
       overflow: hidden;
     }
     .slides-container {
@@ -227,7 +241,6 @@
       text-align: center;
     }
 
-    /* Arrows: offset further from the videos */
     .arrow {
       position: absolute;
       top: 50%;
@@ -240,19 +253,18 @@
       user-select: none;
       font-size: 1.25rem;
       line-height: 1.25rem;
-      z-index: 10; /* ensure arrows appear on top */
+      z-index: 10;
     }
     .arrow:hover {
       background: rgba(0, 0, 0, 0.7);
     }
     .arrow-left {
-      left: 30px; /* Moved further from the center */
+      left: 30px;
     }
     .arrow-right {
-      right: 30px; /* Moved further from the center */
+      right: 30px;
     }
 
-    /* Footer */
     footer {
       margin: 2rem 0;
       color: #999;
@@ -263,252 +275,255 @@
 </head>
 <body>
 
-  <!-- Teaser Video at the Top -->
-  <div class="teaser-container">
-    <video src="assets/teaser.mp4" controls autoplay loop muted></video>
-  </div>
+  <!-- All main content goes inside .content-wrapper -->
+  <div class="content-wrapper">
 
-  <header>
-    <h1>
-      Physics IQ Benchmark:<br />
-      Do generative video models learn physical principles from watching videos?
-    </h1>
-    <div class="authors">
-      Saman Motamed<sup>1,*</sup>, Laura Culp<sup>2</sup>, Kevin Swersky<sup>2</sup>, 
-      Priyank Jaini<sup>2</sup>, Robert Geirhos<sup>2</sup>
-    </div>
-    <div class="affiliations">
-      <strong>1:</strong> INSAIT, Sofia University &nbsp;&nbsp;
-      <strong>2:</strong> Google DeepMind
-    </div>
-    <div class="asterisk-note">* Work done while at Google DeepMind</div>
-  </header>
-
-  <!-- Buttons -->
-  <div class="buttons">
-    <!-- Replace # with your actual links -->
-    <a class="btn-link" href="#" target="_blank">
-      <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo logo-original">Paper
-    </a>
-    <a class="btn-link" href="#" target="_blank">
-      <img src="assets/github-logo.png" alt="GitHub Logo" class="logo logo-bigger">Code
-    </a>
-    <a class="btn-link" href="#" target="_blank">
-      <img src="assets/huggingface-logo.png" alt="Hugging Face Logo" class="logo logo-original logo-bigger">HuggingFace
-    </a>
-    <a class="btn-link" href="#" target="_blank">
-      <img src="assets/data-logo.png" alt="Data Logo" class="logo">Data
-    </a>
-  </div>
-
-  <!-- Abstract Section -->
-  <div class="section-wrapper">
-    <h2>Abstract \uD83D\uDD0A</h2>
-    <p>
-      AI video generation is undergoing a revolution, with quality and realism advancing rapidly.
-      These advances have led to a passionate scientific debate: Do video models learn “world models”
-      that discover laws of physics — or, alternatively, are they merely sophisticated pixel predictors
-      that achieve visual realism without understanding the physical principles of reality?
-    </p>
-    <p>
-      We address this question by developing <strong>Physics-IQ</strong>, a comprehensive benchmark
-      dataset that can only be solved by acquiring a deep understanding of various physical principles,
-      like fluid dynamics, optics, solid mechanics, magnetism and thermodynamics.
-      We find that across a range of current models (Sora, Runway, Pika, Lumiere, Stable Video Diffusion, and VideoPoet),
-      physical understanding is severely limited. At the same time, some test cases can already be successfully solved.
-      For instance, fluid dynamics tend to work better than solid mechanics. This indicates that acquiring certain
-      physical principles from observation alone may be possible, but significant challenges remain.
-      While we expect rapid advances ahead, our work demonstrates that visual realism does not imply physical understanding.
-    </p>
-  </div>
-
-  <!-- Leaderboard Section -->
-  <div class="leaderboard">
-    <h2>Leaderboard \uD83C\uDFC5</h2>
-    <table class="leaderboard-table">
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Physics IQ Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
-          <td>
-            <div class="progress">
-              <!-- 20.7% width, no numeric text -->
-              <div class="progress-bar" style="width: 20.7%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Runway Gen 3 (i2v)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 16.2%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>VideoPoet (i2v)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 15.7%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Stable Video Diffusion (i2v)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 15%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Lumiere (multiframe)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 11.9%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Pika 1.0 (i2v)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 10.9%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Sora (i2v)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 9.2%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Lumiere (i2v)</td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar" style="width: 8.8%;"></div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Video Model Samples -->
-  <div class="section-wrapper">
-    <h2>Examples \uD83C\uDF9E\uFE0F</h2>
-  </div>
-  <div class="video-samples">
-    <!-- Left Arrow -->
-    <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
-
-    <!-- Slides Container -->
-    <div class="slides-container" id="slidesContainer">
-      <!-- Slide 1 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample5a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample5b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Sora</div>
-        </div>
-      </div>
-      <!-- Slide 2 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Pika 1.0</div>
-        </div>
-      </div>
-      <!-- Slide 3 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
-          <div class="caption">VideoPoet (multiframe)</div>
-        </div>
-      </div>
-      <!-- Slide 4 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Runway Gen 3</div>
-        </div>
-      </div>
-      <!-- Slide 5 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample4a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample4b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Stable Video Diffusion</div>
-        </div>
-      </div>
-      <!-- Slide 6 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample6a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample6b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Lumiere (i2v)</div>
-        </div>
-      </div>
-      <!-- Slide 7 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample7a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample7b.mp4" controls muted autoplay loop></video>
-          <div class="caption">VideoPoet (i2v)</div>
-        </div>
-      </div>
-      <!-- Slide 8 -->
-      <div class="slide">
-        <div class="frame">
-          <video src="assets/sample8a.mp4" controls muted autoplay loop></video>
-          <div class="caption">Real test frames</div>
-        </div>
-        <div class="frame">
-          <video src="assets/sample8b.mp4" controls muted autoplay loop></video>
-          <div class="caption">Lumiere (multiframe)</div>
-        </div>
-      </div>
+    <!-- Teaser Video at the Top -->
+    <div class="teaser-container">
+      <video src="assets/teaser.mp4" controls autoplay loop muted></video>
     </div>
 
-    <!-- Right Arrow -->
-    <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
-  </div>
+    <header>
+      <h1>
+        Physics IQ Benchmark:<br />
+        Do generative video models learn physical principles from watching videos?
+      </h1>
+      <div class="authors">
+        Saman Motamed<sup>1,*</sup>, Laura Culp<sup>2</sup>, Kevin Swersky<sup>2</sup>, 
+        Priyank Jaini<sup>2</sup>, Robert Geirhos<sup>2</sup>
+      </div>
+      <div class="affiliations">
+        <strong>1:</strong> INSAIT, Sofia University &nbsp;&nbsp;
+        <strong>2:</strong> Google DeepMind
+      </div>
+      <div class="asterisk-note">* Work done while at Google DeepMind</div>
+    </header>
 
-  <footer>
-    &copy; 2024 Physics IQ Benchmark Project
-  </footer>
+    <!-- Buttons -->
+    <div class="buttons">
+      <!-- Replace # with actual links -->
+      <a class="btn-link" href="#" target="_blank">
+        <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo logo-original">Paper
+      </a>
+      <a class="btn-link" href="#" target="_blank">
+        <img src="assets/github-logo.png" alt="GitHub Logo" class="logo logo-bigger">Code
+      </a>
+      <a class="btn-link" href="#" target="_blank">
+        <img src="assets/huggingface-logo.png" alt="Hugging Face Logo" class="logo logo-original logo-bigger">HuggingFace
+      </a>
+      <a class="btn-link" href="#" target="_blank">
+        <img src="assets/data-logo.png" alt="Data Logo" class="logo">Data
+      </a>
+    </div>
+
+    <!-- Abstract Section -->
+    <div class="section-wrapper">
+      <h2>Abstract \uD83D\uDD0A</h2>
+      <p>
+        AI video generation is undergoing a revolution, with quality and realism advancing rapidly.
+        These advances have led to a passionate scientific debate: Do video models learn “world models”
+        that discover laws of physics — or, alternatively, are they merely sophisticated pixel predictors
+        that achieve visual realism without understanding the physical principles of reality?
+      </p>
+      <p>
+        We address this question by developing <strong>Physics-IQ</strong>, a comprehensive benchmark
+        dataset that can only be solved by acquiring a deep understanding of various physical principles,
+        like fluid dynamics, optics, solid mechanics, magnetism and thermodynamics.
+        We find that across a range of current models (Sora, Runway, Pika, Lumiere, Stable Video Diffusion, and VideoPoet),
+        physical understanding is severely limited. At the same time, some test cases can already be successfully solved.
+        For instance, fluid dynamics tend to work better than solid mechanics. This indicates that acquiring certain
+        physical principles from observation alone may be possible, but significant challenges remain.
+        While we expect rapid advances ahead, our work demonstrates that visual realism does not imply physical understanding.
+      </p>
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="leaderboard">
+      <h2>Leaderboard \uD83C\uDFC5</h2>
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Physics IQ Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 20.7%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Runway Gen 3 (i2v)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 16.2%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>VideoPoet (i2v)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 15.7%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Stable Video Diffusion (i2v)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 15%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Lumiere (multiframe)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 11.9%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Pika 1.0 (i2v)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 10.9%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Sora (i2v)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 9.2%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Lumiere (i2v)</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 8.8%;"></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Video Model Samples -->
+    <div class="section-wrapper">
+      <h2>Examples \uD83C\uDF9E\uFE0F</h2>
+    </div>
+    <div class="video-samples">
+      <!-- Left Arrow -->
+      <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
+
+      <!-- Slides Container -->
+      <div class="slides-container" id="slidesContainer">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample5a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample5b.mp4" controls muted autoplay loop></video>
+            <div class="caption">Sora</div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
+            <div class="caption">Pika 1.0</div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
+            <div class="caption">VideoPoet (multiframe)</div>
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
+            <div class="caption">Runway Gen 3</div>
+          </div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample4a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample4b.mp4" controls muted autoplay loop></video>
+            <div class="caption">Stable Video Diffusion</div>
+          </div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample6a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample6b.mp4" controls muted autoplay loop></video>
+            <div class="caption">Lumiere (i2v)</div>
+          </div>
+        </div>
+        <!-- Slide 7 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample7a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample7b.mp4" controls muted autoplay loop></video>
+            <div class="caption">VideoPoet (i2v)</div>
+          </div>
+        </div>
+        <!-- Slide 8 -->
+        <div class="slide">
+          <div class="frame">
+            <video src="assets/sample8a.mp4" controls muted autoplay loop></video>
+            <div class="caption">Real test frames</div>
+          </div>
+          <div class="frame">
+            <video src="assets/sample8b.mp4" controls muted autoplay loop></video>
+            <div class="caption">Lumiere (multiframe)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Arrow -->
+      <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
+    </div>
+
+    <footer>
+      &copy; 2024 Physics IQ Benchmark Project
+    </footer>
+  </div> <!-- End content-wrapper -->
 
   <!-- Minimal Carousel JavaScript -->
   <script>
