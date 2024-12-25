@@ -10,15 +10,37 @@
 
   <style>
     /* Very light milk-cream background color */
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #fbf8f2; /* Adjust as needed for the perfect shade */
+      height: 100%; /* Ensure body can host the pseudo-element background */
+    }
+
+    body {
+      background: #fbf8f2; /* Base background color */
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #333;
       text-align: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      position: relative; /* So we can use body::before absolutely */
+      z-index: 0;
+    }
+
+    /* The pseudo-element that places your repeated duckie background at 50% opacity */
+    body::before {
+      content: "";
+      position: fixed; /* or absolute, but fixed keeps it still while scrolling */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("assets/duckie.png") repeat center center;
+      /* Adjust background-size if needed, e.g., 200px or 100px for smaller ducks */
+      background-size: 200px auto;
+      opacity: 0.5; /* ~50% transparent */
+      pointer-events: none; /* Let clicks pass through */
+      z-index: -9999; /* Ensure it stays behind everything */
     }
 
     /* Teaser container and video */
@@ -146,7 +168,6 @@
     /* 5% step background & thicker bar, no numeric text in the bar */
     .progress {
       width: 100%;
-      /* Create a repeating pattern every 10% that looks like 5% shading + 5% gap */
       background: repeating-linear-gradient(
         to right,
         #eee 0%,
@@ -168,10 +189,9 @@
       text-align: right;
       box-sizing: border-box;
       position: relative;
-      /* No text inside the bar */
     }
 
-    /* Arrows, etc., for the carousel */
+    /* Carousel / Video Model Samples */
     .video-samples {
       max-width: 800px;
       margin: 2rem auto;
@@ -283,7 +303,7 @@
 
   <!-- Abstract Section -->
   <div class="section-wrapper">
-    <h2>Abstract 📣</h2>
+    <h2>Abstract \uD83D\uDD0A</h2>
     <p>
       AI video generation is undergoing a revolution, with quality and realism advancing rapidly.
       These advances have led to a passionate scientific debate: Do video models learn “world models”
@@ -304,7 +324,7 @@
 
   <!-- Leaderboard Section -->
   <div class="leaderboard">
-    <h2>Leaderboard 🏅</h2>
+    <h2>Leaderboard \uD83C\uDFC5</h2>
     <table class="leaderboard-table">
       <thead>
         <tr>
@@ -313,7 +333,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- 1) VideoPoet (multiframe) with trophy -->
         <tr>
           <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
           <td>
@@ -323,7 +342,6 @@
             </div>
           </td>
         </tr>
-        <!-- 2) Runway Gen 3 (i2v): 16.2% -->
         <tr>
           <td>Runway Gen 3 (i2v)</td>
           <td>
@@ -332,7 +350,6 @@
             </div>
           </td>
         </tr>
-        <!-- 3) VideoPoet (i2v): 15.7% -->
         <tr>
           <td>VideoPoet (i2v)</td>
           <td>
@@ -341,7 +358,6 @@
             </div>
           </td>
         </tr>
-        <!-- 4) Stable Video Diffusion (i2v): 15.0% -->
         <tr>
           <td>Stable Video Diffusion (i2v)</td>
           <td>
@@ -350,7 +366,6 @@
             </div>
           </td>
         </tr>
-        <!-- 5) Lumiere (multiframe): 11.9% -->
         <tr>
           <td>Lumiere (multiframe)</td>
           <td>
@@ -359,7 +374,6 @@
             </div>
           </td>
         </tr>
-        <!-- 6) Pika 1.0 (i2v): 10.9% -->
         <tr>
           <td>Pika 1.0 (i2v)</td>
           <td>
@@ -368,7 +382,6 @@
             </div>
           </td>
         </tr>
-        <!-- 7) Sora (i2v): 9.2% -->
         <tr>
           <td>Sora (i2v)</td>
           <td>
@@ -377,7 +390,6 @@
             </div>
           </td>
         </tr>
-        <!-- 8) Lumiere (i2v): 8.8% -->
         <tr>
           <td>Lumiere (i2v)</td>
           <td>
@@ -392,7 +404,7 @@
 
   <!-- Video Model Samples -->
   <div class="section-wrapper">
-    <h2>Examples 🎞️</h2>
+    <h2>Examples \uD83C\uDF9E\uFE0F</h2>
   </div>
   <div class="video-samples">
     <!-- Left Arrow -->
@@ -504,7 +516,6 @@
     let currentSlide = 0;
 
     function showSlide(index) {
-      // Ensure index is within range
       const slides = document.querySelectorAll('.slide');
       const totalSlides = slides.length;
       if (index < 0) {
@@ -513,7 +524,6 @@
         index = 0;
       }
       currentSlide = index;
-      // Translate the slidesContainer to show the correct slide
       slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
