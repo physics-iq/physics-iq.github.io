@@ -16,11 +16,6 @@
       height: 100%; 
     }
 
-    /*
-     1) Body: we won't color the center here because we want the repeated duckies
-        along the edges. We'll overlay them with a pseudo-element at partial opacity.
-     2) We'll add a .content-wrapper with a background to keep ducks off the center.
-    */
     body {
       position: relative; /* So we can use body::before behind everything */
       min-height: 100vh;
@@ -33,39 +28,33 @@
     }
 
     /* 
-     body::before places the repeated duckie
-     image behind everything, partially transparent.
+      Repeated duck background at partial opacity around edges
+      (unchanged from your original code, except we can tweak the opacity if you like).
     */
     body::before {
       content: "";
-      position: fixed;  /* or absolute, but fixed stays in place on scroll */
+      position: fixed;
       top: 0; 
       left: 0;
       width: 100%;
       height: 100%;
       background: url("assets/duckie.png") repeat center center;
       background-size: 150px auto; /* Adjust duck size as needed */
-      opacity: 0.15;   /* ~50% transparent */
-      pointer-events: none; /* Don’t block clicks */
+      opacity: 0.15; /* partial transparency */
+      pointer-events: none; 
       z-index: -9999;
     }
 
-    /*
-      The content-wrapper is where all your main site content goes.
-      We give it a max-width and a cream background, so the center
-      area is logo-free. The ducks show only around the edges on bigger screens.
-    */
     .content-wrapper {
-      max-width: 1200px; /* or 800px, etc. */
+      max-width: 1200px;
       margin: 0 auto;
-      background: #fbf8f2; /* Very light milk-cream color for main area */
-      min-height: 100vh;   /* So it stretches the full page height */
-      position: relative;  /* Stay above the duck background */
-      z-index: 1;          /* Ensure it's above body::before */
+      background: #fbf8f2; 
+      min-height: 100vh; 
+      position: relative; 
+      z-index: 1; 
       box-sizing: border-box;
     }
 
-    /* Same styling from your existing site but wrapped inside .content-wrapper */
     .teaser-container {
       max-width: 800px;
       margin: 2rem auto;
@@ -180,29 +169,56 @@
       border-bottom: none;
     }
 
+    /* 
+       Updated repeating pattern to 10% chunks, e.g. 
+       10% shading + 10% gap => each chunk is 20% wide,
+       or do 10% shading, 10% gap => total 20% repeating length.
+
+       We'll just do 10% shading and 10% gap for a clearer chunk.
+       Also, we can saturate the shading color more (a darker gray).
+    */
     .progress {
       width: 100%;
       background: repeating-linear-gradient(
         to right,
-        #eee 0%,
-        #eee 5%,
-        transparent 5%,
-        transparent 10%
+        #ccc 0%,
+        #ccc 10%,
+        transparent 10%,
+        transparent 20%
       );
-      background-size: 10% 100%;
+      background-size: 20% 100%; /* each chunk is 20% wide, so 10% is shading, 10% is transparent */
       border-radius: 0.25rem;
       overflow: hidden;
       margin: 0.25rem 0;
       position: relative;
       height: 1.5rem;
     }
+
     .progress-bar {
       height: 100%;
-      background-color: #5585FF;
+      background-color: #2255FF; 
       border-radius: 0.25rem 0 0 0.25rem;
       text-align: right;
       box-sizing: border-box;
       position: relative;
+
+      /* Store the actual numeric value in a data attribute, e.g. data-score="20.7%" */
+    }
+    /* Hover tooltip for the progress bar: 
+       We'll create a small tooltip that appears above the bar.
+       This is a pure CSS approach using the ::after pseudo-element.
+    */
+    .progress-bar:hover::after {
+      content: attr(data-score); /* read from data-score attribute */
+      position: absolute;
+      top: -2rem; /* position above the bar */
+      right: 0;   /* or left: 0, if you prefer */
+      background: #333;
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      border-radius: 4px;
+      white-space: nowrap;
     }
 
     /* Carousel / Video Samples */
@@ -275,19 +291,14 @@
 </head>
 <body>
 
-  <!-- All main content goes inside .content-wrapper -->
   <div class="content-wrapper">
-
     <!-- Teaser Video at the Top -->
     <div class="teaser-container">
       <video src="assets/teaser.mp4" controls autoplay loop muted></video>
     </div>
 
     <header>
-      <h1>
-        Physics IQ Benchmark:<br />
-        Do generative video models learn physical principles from watching videos?
-      </h1>
+      <h1>Physics IQ Benchmark:<br>Do generative video models learn physical principles from watching videos?</h1>
       <div class="authors">
         Saman Motamed<sup>1,*</sup>, Laura Culp<sup>2</sup>, Kevin Swersky<sup>2</sup>, 
         Priyank Jaini<sup>2</sup>, Robert Geirhos<sup>2</sup>
@@ -316,7 +327,7 @@
       </a>
     </div>
 
-    <!-- Abstract Section -->
+    <!-- Abstract -->
     <div class="section-wrapper">
       <h2>Abstract 📣</h2>
       <p>
@@ -337,7 +348,7 @@
       </p>
     </div>
 
-    <!-- Leaderboard Section -->
+    <!-- Leaderboard -->
     <div class="leaderboard">
       <h2>Leaderboard 🥇</h2>
       <table class="leaderboard-table">
@@ -351,8 +362,9 @@
           <tr>
             <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
             <td>
+              <!-- Add data-score attribute for hover tooltip -->
               <div class="progress">
-                <div class="progress-bar" style="width: 20.7%;"></div>
+                <div class="progress-bar" style="width:20.7%;" data-score="20.7%"></div>
               </div>
             </td>
           </tr>
@@ -360,7 +372,7 @@
             <td>Runway Gen 3 (i2v)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 16.2%;"></div>
+                <div class="progress-bar" style="width:16.2%;" data-score="16.2%"></div>
               </div>
             </td>
           </tr>
@@ -368,7 +380,7 @@
             <td>VideoPoet (i2v)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 15.7%;"></div>
+                <div class="progress-bar" style="width:15.7%;" data-score="15.7%"></div>
               </div>
             </td>
           </tr>
@@ -376,7 +388,7 @@
             <td>Stable Video Diffusion (i2v)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 15%;"></div>
+                <div class="progress-bar" style="width:15%;" data-score="15.0%"></div>
               </div>
             </td>
           </tr>
@@ -384,7 +396,7 @@
             <td>Lumiere (multiframe)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 11.9%;"></div>
+                <div class="progress-bar" style="width:11.9%;" data-score="11.9%"></div>
               </div>
             </td>
           </tr>
@@ -392,7 +404,7 @@
             <td>Pika 1.0 (i2v)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 10.9%;"></div>
+                <div class="progress-bar" style="width:10.9%;" data-score="10.9%"></div>
               </div>
             </td>
           </tr>
@@ -400,7 +412,7 @@
             <td>Sora (i2v)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 9.2%;"></div>
+                <div class="progress-bar" style="width:9.2%;" data-score="9.2%"></div>
               </div>
             </td>
           </tr>
@@ -408,7 +420,7 @@
             <td>Lumiere (i2v)</td>
             <td>
               <div class="progress">
-                <div class="progress-bar" style="width: 8.8%;"></div>
+                <div class="progress-bar" style="width:8.8%;" data-score="8.8%"></div>
               </div>
             </td>
           </tr>
@@ -416,15 +428,13 @@
       </table>
     </div>
 
-    <!-- Video Model Samples -->
+    <!-- Samples -->
     <div class="section-wrapper">
       <h2>Examples 🎞️</h2>
     </div>
-    <div class="video-samples">
-      <!-- Left Arrow -->
-      <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
 
-      <!-- Slides Container -->
+    <div class="video-samples">
+      <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
       <div class="slides-container" id="slidesContainer">
         <!-- Slide 1 -->
         <div class="slide">
@@ -515,8 +525,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Right Arrow -->
       <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
     </div>
 
@@ -525,7 +533,6 @@
     </footer>
   </div> <!-- End content-wrapper -->
 
-  <!-- Minimal Carousel JavaScript -->
   <script>
     const slidesContainer = document.getElementById('slidesContainer');
     let currentSlide = 0;
@@ -533,11 +540,8 @@
     function showSlide(index) {
       const slides = document.querySelectorAll('.slide');
       const totalSlides = slides.length;
-      if (index < 0) {
-        index = totalSlides - 1;
-      } else if (index >= totalSlides) {
-        index = 0;
-      }
+      if (index < 0) index = totalSlides - 1;
+      else if (index >= totalSlides) index = 0;
       currentSlide = index;
       slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
