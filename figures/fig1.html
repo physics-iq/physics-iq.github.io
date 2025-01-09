@@ -8,7 +8,8 @@
     .gif-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
+      gap: 5px; /* Reduced the gap between columns */
+      justify-content: center;
     }
     .gif-cell {
       display: flex;
@@ -16,7 +17,7 @@
       align-items: center;
     }
     .gif-cell img {
-      width: 100px; /* Adjust as needed */
+      width: 150px; /* Increased GIF size */
       height: auto;
     }
   </style>
@@ -46,4 +47,3 @@
   </div>
 </body>
 </html>
-
