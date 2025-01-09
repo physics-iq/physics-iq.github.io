@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIF Grid</title>
+  <style>
+    .gif-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .gif-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gif-cell img {
+      width: 100px; /* Adjust as needed */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="gif-grid">
+    <div class="gif-cell">
+      <img src="assets/r11.gif" alt="GIF r11">
+      <img src="assets/r12.gif" alt="GIF r12">
+    </div>
+    <div class="gif-cell">
+      <img src="assets/r12.gif" alt="GIF r12">
+      <img src="assets/r22.gif" alt="GIF r22">
+    </div>
+    <div class="gif-cell">
+      <img src="assets/r13.gif" alt="GIF r13">
+      <img src="assets/r23.gif" alt="GIF r23">
+    </div>
+    <div class="gif-cell">
+      <img src="assets/r14.gif" alt="GIF r14">
+      <img src="assets/r24.gif" alt="GIF r24">
+    </div>
+    <div class="gif-cell">
+      <img src="assets/r15.gif" alt="GIF r15">
+      <img src="assets/r25.gif" alt="GIF r25">
+    </div>
+  </div>
+</body>
+</html>
 
