@@ -14,7 +14,7 @@
     }
     .grid-container {
       display: grid;
-      grid-template-columns: 1fr repeat(4, 1fr);
+      grid-template-columns: auto repeat(4, 1fr);
       gap: 20px;
       width: 100%;
       align-items: center;
@@ -47,7 +47,10 @@
       text-orientation: mixed;
       font-weight: bold;
       text-align: center;
-      margin: auto;
+      grid-row: span 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
@@ -61,8 +64,9 @@
     <div class="column-title">Ground Truth</div>
     <div class="column-title">Ground Truth</div>
 
+    <!-- Row 1 and 2 Label -->
+    <div class="row-label">Best performing model: VideoPoet (multiframe)</div>
     <!-- Row 1 -->
-    <div class="row-label" rowspan="2">Best performing model: VideoPoet (multiframe)</div>
     <div class="grid-item">
       <img src="../assets/vpb1.gif" alt="Best Performing Scenario">
       <div class="text">"A white domino block is released above a mug of dark liquid."</div>
@@ -98,8 +102,9 @@
       <div class="text">Ground Truth</div>
     </div>
 
+    <!-- Row 3 and 4 Label -->
+    <div class="row-label">Worst performing model: Lumiere (i2v)</div>
     <!-- Row 3 -->
-    <div class="row-label" rowspan="2">Worst performing model: Lumiere (i2v)</div>
     <div class="grid-item">
       <img src="../assets/lumb1.gif" alt="Best Performing Scenario">
       <div class="text">"Red liquid pouring in a glass."</div>
