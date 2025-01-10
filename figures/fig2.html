@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Grid Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 90%;
+    }
+    .grid-item {
+      text-align: center;
+    }
+    .grid-item img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+    }
+    .text {
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Video Performance Comparison</h1>
+  <div class="grid-container">
+    <!-- Row 1 -->
+    <div class="grid-item">
+      <img src="assets/vpb1.gif" alt="Best Performing Model 1">
+      <div class="text">Best performing scenario (Fluid dynamics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/vpw1.gif" alt="Worst Performing Model 1">
+      <div class="text">Worst performing scenario (Fluid dynamics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/vpbgt1.gif" alt="Ground Truth Best 1">
+      <div class="text">Ground Truth</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/vpwgt1.gif" alt="Ground Truth Worst 1">
+      <div class="text">Ground Truth</div>
+    </div>
+    <!-- Row 2 -->
+    <div class="grid-item">
+      <img src="assets/vpb2.gif" alt="Best Performing Model 2">
+      <div class="text">Best performing scenario (Solid mechanics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/vpw2.gif" alt="Worst Performing Model 2">
+      <div class="text">Worst performing scenario (Solid mechanics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/vpbgt2.gif" alt="Ground Truth Best 2">
+      <div class="text">Ground Truth</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/vpwgt2.gif" alt="Ground Truth Worst 2">
+      <div class="text">Ground Truth</div>
+    </div>
+    <!-- Row 3 -->
+    <div class="grid-item">
+      <img src="assets/lumb1.gif" alt="Best Performing Lumiere 1">
+      <div class="text">Best performing scenario (Fluid dynamics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/lumw1.gif" alt="Worst Performing Lumiere 1">
+      <div class="text">Worst performing scenario (Fluid dynamics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/lumbgt1.gif" alt="Ground Truth Lumiere Best 1">
+      <div class="text">Ground Truth</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/lumgt1.gif" alt="Ground Truth Lumiere Worst 1">
+      <div class="text">Ground Truth</div>
+    </div>
+    <!-- Row 4 -->
+    <div class="grid-item">
+      <img src="assets/lumb2.gif" alt="Best Performing Lumiere 2">
+      <div class="text">Best performing scenario (Solid mechanics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/lumw2.gif" alt="Worst Performing Lumiere 2">
+      <div class="text">Worst performing scenario (Solid mechanics)</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/lumbgt2.gif" alt="Ground Truth Lumiere Best 2">
+      <div class="text">Ground Truth</div>
+    </div>
+    <div class="grid-item">
+      <img src="assets/lumgt2.gif" alt="Ground Truth Lumiere Worst 2">
+      <div class="text">Ground Truth</div>
+    </div>
+  </div>
+</body>
+</html>
