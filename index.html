@@ -434,99 +434,171 @@ body {
     </div>
 
     <div class="video-samples">
-      <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
-      <div class="slides-container" id="slidesContainer">
-        <!-- Slide 1 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample5a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample5b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Sora</div>
-          </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Pika 1.0</div>
-          </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
-            <div class="caption">VideoPoet (multiframe)</div>
-          </div>
-        </div>
-        <!-- Slide 4 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Runway Gen 3</div>
-          </div>
-        </div>
-        <!-- Slide 5 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample4a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample4b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Stable Video Diffusion</div>
-          </div>
-        </div>
-        <!-- Slide 6 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample6a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample6b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Lumiere (i2v)</div>
-          </div>
-        </div>
-        <!-- Slide 7 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample7a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample7b.mp4" controls muted autoplay loop></video>
-            <div class="caption">VideoPoet (i2v)</div>
-          </div>
-        </div>
-        <!-- Slide 8 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample8a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample8b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Lumiere (multiframe)</div>
-          </div>
-        </div>
+  <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
+  <div class="slides-container" id="slidesContainer">
+    <!-- Slide 1: Match -->
+    <div class="slide">
+      <div class="frame">
+        <video src="../match/real_match.gif" autoplay muted loop></video>
+        <div class="caption">Real Test Frames</div>
       </div>
-      <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
+      <div class="frame">
+        <video src="../match/vp_m_match.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/vp_i2v_match.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/sora_match.gif" autoplay muted loop></video>
+        <div class="caption">Sora (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/svd_match.gif" autoplay muted loop></video>
+        <div class="caption">Stable Video Diffusion (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/pika_match.gif" autoplay muted loop></video>
+        <div class="caption">Pika 1.0 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/runway_match.gif" autoplay muted loop></video>
+        <div class="caption">Runway Gen 3 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/lum_m_match.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../match/lum_i2v_match.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (i2v)</div>
+      </div>
     </div>
+
+    <!-- Slide 2: Weight -->
+    <div class="slide">
+      <div class="frame">
+        <video src="../weight/real_weight.gif" autoplay muted loop></video>
+        <div class="caption">Real Test Frames</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/vp_m_weight.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/vp_i2v_weight.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/sora_weight.gif" autoplay muted loop></video>
+        <div class="caption">Sora (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/svd_weight.gif" autoplay muted loop></video>
+        <div class="caption">Stable Video Diffusion (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/pika_weight.gif" autoplay muted loop></video>
+        <div class="caption">Pika 1.0 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/runway_weight.gif" autoplay muted loop></video>
+        <div class="caption">Runway Gen 3 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/lum_m_weight.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../weight/lum_i2v_weight.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (i2v)</div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Paint -->
+    <div class="slide">
+      <div class="frame">
+        <video src="../paint/real_paint.gif" autoplay muted loop></video>
+        <div class="caption">Real Test Frames</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/vp_m_paint.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/vp_i2v_paint.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/sora_paint.gif" autoplay muted loop></video>
+        <div class="caption">Sora (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/svd_paint.gif" autoplay muted loop></video>
+        <div class="caption">Stable Video Diffusion (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/pika_paint.gif" autoplay muted loop></video>
+        <div class="caption">Pika 1.0 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/runway_paint.gif" autoplay muted loop></video>
+        <div class="caption">Runway Gen 3 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/lum_m_paint.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../paint/lum_i2v_paint.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (i2v)</div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Teapot -->
+    <div class="slide">
+      <div class="frame">
+        <video src="../teapot/real_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Real Test Frames</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/vp_m_teapot.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/vp_i2v_teapot.gif" autoplay muted loop></video>
+        <div class="caption">VideoPoet (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/sora_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Sora (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/svd_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Stable Video Diffusion (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/pika_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Pika 1.0 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/runway_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Runway Gen 3 (i2v)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/lum_m_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (multiframe)</div>
+      </div>
+      <div class="frame">
+        <video src="../teapot/lum_i2v_teapot.gif" autoplay muted loop></video>
+        <div class="caption">Lumiere (i2v)</div>
+      </div>
+    </div>
+  </div>
+  <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
+</div>
+
 
     <footer>
       &copy; 2025 Physics-IQ Benchmark Project
