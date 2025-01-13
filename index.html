@@ -624,34 +624,26 @@ body {
       </table>
     </div>
 
-  <script>
-    let currentSlide = 0;
+<!-- Citation Section -->
+<div class="citation-section">
+  <h2>Citation</h2>
+  <p>If you use our dataset and metrics, please consider citing our work:</p>
+  <pre>
+@article{physicsIQ2025,
+  title={Physics-IQ Benchmark: Do generative video models learn physical principles from watching videos?},
+  author={Motamed, Saman and Culp, Laura and Swersky, Kevin and Jaini, Priyank and Geirhos, Robert},
+  journal={ArXiv},
+  year={2025},
+  url={https://arxiv.org/abs/example-url},
+}
+  </pre>
+</div>
 
-    function showSlide(index) {
-      const slides = document.querySelectorAll('.slide');
-      const slideContainer = document.querySelector('.slide-container');
-      const totalSlides = slides.length;
+<!-- Footer Logo -->
+<footer>
+  <p></p>
+  <img src="../assets/gdm_logo.png" alt="Physics-IQ Logo">
+</footer>
 
-      // Ensure index stays within bounds
-      if (index < 0) currentSlide = totalSlides - 1;
-      else if (index >= totalSlides) currentSlide = 0;
-      else currentSlide = index;
-
-      // Shift the container to the current slide
-      const offset = -currentSlide * 100; // 100% per slide
-      slideContainer.style.transform = translateX(${offset}%);
-    }
-
-    function prevSlide() {
-      showSlide(currentSlide - 1);
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    // Initialize the first slide
-    document.addEventListener('DOMContentLoaded', () => showSlide(currentSlide));
-  </script>
 </body>
 </html>
