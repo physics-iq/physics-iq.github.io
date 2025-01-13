@@ -655,10 +655,10 @@ body {
 
 <!-- Citation Section -->
 <div class="citation-section">
-  <h2>BibTeX 🤗</h2>
+  <h2>BibTeX</h2>
   <p>If you use our dataset and metrics, please cite our work:</p>
   <div style="background: #f9f9f9; border: 1px solid #ccc; border-radius: 5px; padding: 1rem; position: relative;">
-    <pre style="margin: 0; font-family: monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">
+    <pre id="citation-text" style="margin: 0; font-family: monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">
 @article{physicsIQ2025,
   title={Physics-IQ Benchmark: Do generative video models learn physical principles from watching videos?},
   author={Motamed, Saman and Culp, Laura and Swersky, Kevin and Jaini, Priyank and Geirhos, Robert},
@@ -672,6 +672,20 @@ body {
     </button>
   </div>
 </div>
+
+<script>
+  function copyCitation() {
+    const citationText = document.getElementById("citation-text").innerText; // Get the citation text
+    navigator.clipboard.writeText(citationText) // Copy to clipboard
+      .then(() => {
+        alert("Citation copied to clipboard!"); // Show success message
+      })
+      .catch(() => {
+        alert("Failed to copy citation. Please try again!"); // Show error message if copying fails
+      });
+  }
+</script>
+
 
 <!-- Footer Logo -->
 <footer>
