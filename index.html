@@ -35,24 +35,23 @@ body {
 
 .gif-header {
   display: grid;
-  grid-template-columns: repeat(5, auto); /* Ensure each column aligns with the GIFs */
-  width: 100%; /* Matches the GIF grid */
+  grid-template-columns: repeat(5, 1fr); /* Equal column distribution */
+  width: 100%;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reduce gap between header and GIFs */
   font-weight: bold;
-  font-size: 14px; /* Smaller font size to fit */
+  font-size: 14px; /* Adjust header text size to fit */
 }
 
 .gif-column-header {
-  padding: 0; /* Remove extra padding */
-  margin: 0 auto; /* Center-align titles exactly */
+  padding: 0; /* Remove extra padding around text */
+  margin: 0; /* Eliminate extra margins around header */
 }
 
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(5, auto); /* Matches header columns */
-  gap: 10px; /* Maintain spacing between columns */
-  width: 100%; /* Consistent alignment with header */
+  grid-template-columns: repeat(5, 1fr); /* Ensure GIFs align with headers */
+  gap: 5px; /* Maintain small gaps between GIFs */
 }
 
 .gif-cell {
@@ -64,10 +63,11 @@ body {
 
 .gif-cell img {
   width: 100%;
-  max-width: 150px; /* Size of the GIFs */
+  max-width: 120px; /* Adjust GIF size if needed */
   height: auto;
-  margin-bottom: 5px; /* Spacing between GIFs */
+  margin-bottom: 2px; /* Small margin between stacked GIFs */
 }
+
 
 
     
