@@ -26,6 +26,48 @@ body {
   background: #fff; /* Plain white background */
 }
 
+    .gif-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gif-header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.gif-column-header {
+  padding: 5px 0;
+}
+
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.gif-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gif-cell img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+    
+
 .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -369,10 +411,38 @@ body {
 
 
 
-    <div class="pdf-container">
-  <img src="../assets/category_samples.jpg" alt="Preview of PDF">
-  <div class="pdf-caption">Physics IQ tests physics understadning across 5 categories</div>
+<div class="gif-container">
+  <div class="gif-header">
+    <div class="gif-column-header">Solid mechanics</div>
+    <div class="gif-column-header">Fluid dynamics</div>
+    <div class="gif-column-header">Optics</div>
+    <div class="gif-column-header">Thermodynamics</div>
+    <div class="gif-column-header">Magnetism</div>
+  </div>
+  <div class="gif-grid">
+    <div class="gif-cell">
+      <img src="../assets/r11.gif" alt="GIF r11">
+      <img src="../assets/r21.gif" alt="GIF r21">
+    </div>
+    <div class="gif-cell">
+      <img src="../assets/r12.gif" alt="GIF r12">
+      <img src="../assets/r22.gif" alt="GIF r22">
+    </div>
+    <div class="gif-cell">
+      <img src="../assets/r13.gif" alt="GIF r13">
+      <img src="../assets/r23.gif" alt="GIF r23">
+    </div>
+    <div class="gif-cell">
+      <img src="../assets/r14.gif" alt="GIF r14">
+      <img src="../assets/r24.gif" alt="GIF r24">
+    </div>
+    <div class="gif-cell">
+      <img src="../assets/r15.gif" alt="GIF r15">
+      <img src="../assets/r25.gif" alt="GIF r25">
+    </div>
+  </div>
 </div>
+
     
     <!-- Abstract -->
     <div class="section-wrapper">
