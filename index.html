@@ -17,41 +17,20 @@
     }
 
     body {
-      position: relative; /* So we can use body::before behind everything */
       min-height: 100vh;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #333;
       text-align: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background: #fff; /* White behind the ducks, so edges are visible */
-    }
-
-    /* 
-      Repeated duck background at partial opacity around edges
-      (unchanged from your original code, except we can tweak the opacity if you like).
-    */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("assets/duckie.png") repeat center center;
-      background-size: 150px auto; /* Adjust duck size as needed */
-      opacity: 0.15; /* partial transparency */
-      pointer-events: none; 
-      z-index: -9999;
+      background: #fff; /* Plain white background */
     }
 
     .content-wrapper {
       max-width: 1200px;
       margin: 0 auto;
-      background: #fbf8f2; 
       min-height: 100vh; 
       position: relative; 
-      z-index: 1; 
       box-sizing: border-box;
     }
 
@@ -144,143 +123,6 @@
       margin-bottom: 1rem;
     }
 
-    .leaderboard {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      text-align: center;
-    }
-    .leaderboard-table {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      border-collapse: collapse;
-    }
-    .leaderboard-table th,
-    .leaderboard-table td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #ddd;
-    }
-    .leaderboard-table th {
-      background: #f2eee8;
-      font-weight: 600;
-    }
-    .leaderboard-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* 
-       Updated repeating pattern to 10% chunks, e.g. 
-       10% shading + 10% gap => each chunk is 20% wide,
-       or do 10% shading, 10% gap => total 20% repeating length.
-
-       We'll just do 10% shading and 10% gap for a clearer chunk.
-       Also, we can saturate the shading color more (a darker gray).
-    */
-    .progress {
-      width: 100%;
-      background: repeating-linear-gradient(
-        to right,
-        #ccc 0%,
-        #ccc 10%,
-        transparent 10%,
-        transparent 20%
-      );
-      background-size: 20% 100%; /* each chunk is 20% wide, so 10% is shading, 10% is transparent */
-      border-radius: 0.25rem;
-      overflow: hidden;
-      margin: 0.25rem 0;
-      position: relative;
-      height: 1.5rem;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background-color: #2255FF; 
-      border-radius: 0.25rem 0 0 0.25rem;
-      text-align: right;
-      box-sizing: border-box;
-      position: relative;
-
-      /* Store the actual numeric value in a data attribute, e.g. data-score="20.7%" */
-    }
-    /* Hover tooltip for the progress bar: 
-       We'll create a small tooltip that appears above the bar.
-       This is a pure CSS approach using the ::after pseudo-element.
-    */
-    .progress-bar:hover::after {
-      content: attr(data-score); /* read from data-score attribute */
-      position: absolute;
-      top: -2rem; /* position above the bar */
-      right: 0;   /* or left: 0, if you prefer */
-      background: #333;
-      color: #fff;
-      padding: 2px 6px;
-      font-size: 0.8rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    /* Carousel / Video Samples */
-    .video-samples {
-      max-width: 800px;
-      margin: 2rem auto;
-      position: relative;
-      overflow: hidden;
-    }
-    .slides-container {
-      display: flex;
-      transition: transform 0.3s ease-in-out;
-    }
-    .slide {
-      min-width: 100%;
-      display: flex;
-      justify-content: space-around;
-      gap: 1rem;
-      padding: 0 1rem;
-      box-sizing: border-box;
-    }
-    .frame {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 48%;
-    }
-    .frame video {
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-    .caption {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.25rem;
-      text-align: center;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 0.75rem;
-      cursor: pointer;
-      border-radius: 9999px;
-      user-select: none;
-      font-size: 1.25rem;
-      line-height: 1.25rem;
-      z-index: 10;
-    }
-    .arrow:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
-    .arrow-left {
-      left: 30px;
-    }
-    .arrow-right {
-      right: 30px;
-    }
-
     footer {
       margin: 2rem 0;
       color: #999;
@@ -314,13 +156,10 @@
           * Work done while at Google DeepMind.<br>
           † Joint last authors.
       </div>
-
-
     </header>
 
     <!-- Buttons -->
     <div class="buttons">
-      <!-- Replace # with actual links -->
       <a class="btn-link" href="#" target="_blank">
         <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo logo-original">Paper
       </a>
@@ -335,6 +174,14 @@
       </a>
     </div>
 
+    <!-- TL;DR -->
+    <div class="section-wrapper">
+      <h2>TL;DR</h2>
+      <p>
+        We develop the <strong>Physics-IQ benchmark</strong>, which reveals that AI video models lack physical understanding despite achieving visual realism.
+      </p>
+    </div>
+
     <!-- Abstract -->
     <div class="section-wrapper">
       <h2>Abstract 📣</h2>
@@ -346,221 +193,18 @@
       </p>
       <p>
         We address this question by developing <strong>Physics-IQ</strong>, a comprehensive benchmark
-        dataset that can only be solved by acquiring a deep understanding of various physical principles,
-        like fluid dynamics, optics, solid mechanics, magnetism and thermodynamics.
-        We find that across a range of current models (Sora, Runway, Pika, Lumiere, Stable Video Diffusion, and VideoPoet),
-        physical understanding is severely limited. At the same time, some test cases can already be successfully solved.
-        For instance, fluid dynamics tend to work better than solid mechanics. This indicates that acquiring certain
-        physical principles from observation alone may be possible, but significant challenges remain.
-        While we expect rapid advances ahead, our work demonstrates that visual realism does not imply physical understanding.
+        dataset that requires deep understanding of physical principles like fluid dynamics, optics,
+        solid mechanics, magnetism, and thermodynamics. Across current models (Sora, Runway, Pika,
+        Lumiere, Stable Video Diffusion, and VideoPoet), physical understanding is severely limited.
+        Some test cases, like fluid dynamics, are successfully solved, indicating that acquiring certain
+        physical principles from observation alone may be possible. However, significant challenges remain.
+        Our work demonstrates that visual realism does not imply physical understanding.
       </p>
-    </div>
-
-    <!-- Leaderboard -->
-    <div class="leaderboard">
-      <h2>Leaderboard 🥇</h2>
-      <table class="leaderboard-table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Physics IQ Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
-            <td>
-              <!-- Add data-score attribute for hover tooltip -->
-              <div class="progress">
-                <div class="progress-bar" style="width:20.7%;" data-score="20.7%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Runway Gen 3 (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:16.2%;" data-score="16.2%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>VideoPoet (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:15.7%;" data-score="15.7%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Stable Video Diffusion (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:15%;" data-score="15.0%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Lumiere (multiframe)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:11.9%;" data-score="11.9%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Pika 1.0 (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:10.9%;" data-score="10.9%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Sora (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:9.2%;" data-score="9.2%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Lumiere (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:8.8%;" data-score="8.8%"></div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Samples -->
-    <div class="section-wrapper">
-      <h2>Examples 🎞️</h2>
-    </div>
-
-    <div class="video-samples">
-      <div class="arrow arrow-left" onclick="prevSlide()">&lsaquo;</div>
-      <div class="slides-container" id="slidesContainer">
-        <!-- Slide 1 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample5a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample5b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Sora</div>
-          </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample1a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample1b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Pika 1.0</div>
-          </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample2a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample2b.mp4" controls muted autoplay loop></video>
-            <div class="caption">VideoPoet (multiframe)</div>
-          </div>
-        </div>
-        <!-- Slide 4 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample3a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample3b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Runway Gen 3</div>
-          </div>
-        </div>
-        <!-- Slide 5 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample4a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample4b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Stable Video Diffusion</div>
-          </div>
-        </div>
-        <!-- Slide 6 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample6a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample6b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Lumiere (i2v)</div>
-          </div>
-        </div>
-        <!-- Slide 7 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample7a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample7b.mp4" controls muted autoplay loop></video>
-            <div class="caption">VideoPoet (i2v)</div>
-          </div>
-        </div>
-        <!-- Slide 8 -->
-        <div class="slide">
-          <div class="frame">
-            <video src="assets/sample8a.mp4" controls muted autoplay loop></video>
-            <div class="caption">Real test frames</div>
-          </div>
-          <div class="frame">
-            <video src="assets/sample8b.mp4" controls muted autoplay loop></video>
-            <div class="caption">Lumiere (multiframe)</div>
-          </div>
-        </div>
-      </div>
-      <div class="arrow arrow-right" onclick="nextSlide()">&rsaquo;</div>
     </div>
 
     <footer>
       &copy; 2025 Physics-IQ Benchmark Project
     </footer>
-  </div> <!-- End content-wrapper -->
-
-  <script>
-    const slidesContainer = document.getElementById('slidesContainer');
-    let currentSlide = 0;
-
-    function showSlide(index) {
-      const slides = document.querySelectorAll('.slide');
-      const totalSlides = slides.length;
-      if (index < 0) index = totalSlides - 1;
-      else if (index >= totalSlides) index = 0;
-      currentSlide = index;
-      slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      showSlide(currentSlide - 1);
-    }
-  </script>
+  </div>
 </body>
 </html>
