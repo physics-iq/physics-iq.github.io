@@ -696,7 +696,6 @@ body {
     textArea.select();
     try {
       document.execCommand("copy"); // Fallback to execCommand
-      alert("Citation copied to clipboard!");
     } catch (err) {
       alert("Failed to copy citation. Please copy it manually.");
     }
