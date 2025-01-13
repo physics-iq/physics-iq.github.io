@@ -212,40 +212,29 @@ body {
       overflow: hidden;
     }
     .slide-container {
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .slide {
-      display: grid;
-      grid-template-rows: auto repeat(2, auto);
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      padding: 1rem;
-      box-sizing: border-box;
-      justify-items: center;
-      width: 100%;
-    }
-    
-    .frame {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 180px; /* Adjust this if needed */
-    }
-    
-    .frame img {
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-    
-    .caption {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.5rem;
-      text-align: center;
-    }
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
 
+.slide {
+  display: grid;
+  grid-template-rows: auto repeat(2, auto);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; /* Space between rows and columns */
+  width: 100%; /* Full width for each slide */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.frame img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.caption {
+  font-size: 
+    }
 
 
     .arrow {
