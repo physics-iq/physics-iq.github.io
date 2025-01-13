@@ -653,9 +653,8 @@ body {
       </table>
     </div>
 
-<!-- Citation Section -->
 <div class="citation-section">
-  <h2>BibTeX</h2>
+  <h2>Citation</h2>
   <p>If you use our dataset and metrics, please cite our work:</p>
   <div style="background: #f9f9f9; border: 1px solid #ccc; border-radius: 5px; padding: 1rem; position: relative;">
     <pre id="citation-text" style="margin: 0; font-family: monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">
@@ -676,13 +675,34 @@ body {
 <script>
   function copyCitation() {
     const citationText = document.getElementById("citation-text").innerText; // Get the citation text
-    navigator.clipboard.writeText(citationText) // Copy to clipboard
-      .then(() => {
-        alert("Citation copied to clipboard!"); // Show success message
-      })
-      .catch(() => {
-        alert("Failed to copy citation. Please try again!"); // Show error message if copying fails
-      });
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      // Modern method using Clipboard API
+      navigator.clipboard.writeText(citationText)
+        .then(() => {
+          alert("Citation copied to clipboard!");
+        })
+        .catch(() => {
+          fallbackCopy(citationText);
+        });
+    } else {
+      // Fallback method
+      fallbackCopy(citationText);
+    }
+  }
+
+  function fallbackCopy(text) {
+    // Create a temporary textarea element
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand("copy"); // Fallback to execCommand
+      alert("Citation copied to clipboard!");
+    } catch (err) {
+      alert("Failed to copy citation. Please copy it manually.");
+    }
+    document.body.removeChild(textArea); // Clean up
   }
 </script>
 
@@ -693,21 +713,6 @@ body {
   <img src="../assets/gdm_logo.png" alt="Physics-IQ Logo" style="max-width: 250px; height: auto; margin-top: 1rem;">
 </footer>
 
-<script>
-  function copyCitation() {
-    const citation = `
-@article{physicsIQ2025,
-  title={Physics-IQ Benchmark: Do generative video models learn physical principles from watching videos?},
-  author={Motamed, Saman and Culp, Laura and Swersky, Kevin and Jaini, Priyank and Geirhos, Robert},
-  journal={ArXiv},
-  year={2025},
-  url={https://arxiv.org/abs/example-url},
-}`;
-    navigator.clipboard.writeText(citation).then(() => {
-      alert("Citation copied to clipboard!");
-    });
-  }
-</script>
 
 
 </body>
