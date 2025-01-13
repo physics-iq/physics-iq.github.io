@@ -216,29 +216,35 @@ body {
       transition: transform 0.3s ease-in-out;
     }
     .slide {
-      min-width: 100%;
-      display: flex;
-      justify-content: space-around;
-      gap: 1rem;
-      padding: 0 1rem;
-      box-sizing: border-box;
-    }
-    .frame {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 48%;
-    }
-    .frame video {
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-    .caption {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.25rem;
-      text-align: center;
-    }
+  display: grid;
+  grid-template-rows: auto repeat(2, auto);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; /* Add spacing between videos */
+  padding: 1rem;
+  box-sizing: border-box;
+  justify-items: center;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 180px; /* Adjust this to fit 4 videos per row */
+}
+
+.frame video, .frame img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
 
     .arrow {
       position: absolute;
