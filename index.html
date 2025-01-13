@@ -11,49 +11,31 @@
   <style>
     /* Reset default margins/padding */
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%; 
-    }
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+}
 
-    body {
-      position: relative; /* So we can use body::before behind everything */
-      min-height: 100vh;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: #333;
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      background: #fff; /* White behind the ducks, so edges are visible */
-    }
+body {
+  min-height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff; /* Plain white background */
+}
 
-    /* 
-      Repeated duck background at partial opacity around edges
-      (unchanged from your original code, except we can tweak the opacity if you like).
-    */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("assets/duckie.png") repeat center center;
-      background-size: 150px auto; /* Adjust duck size as needed */
-      opacity: 0.15; /* partial transparency */
-      pointer-events: none; 
-      z-index: -9999;
-    }
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fbf8f2; 
+  min-height: 100vh; 
+  position: relative; 
+  z-index: 1; 
+  box-sizing: border-box;
+}
 
-    .content-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: #fbf8f2; 
-      min-height: 100vh; 
-      position: relative; 
-      z-index: 1; 
-      box-sizing: border-box;
-    }
 
     .teaser-container {
       max-width: 800px;
