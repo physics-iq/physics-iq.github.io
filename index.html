@@ -26,7 +26,7 @@ body {
   background: #fff; /* Plain white background */
 }
 
-  .gif-container {
+ .gif-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -35,22 +35,24 @@ body {
 
 .gif-header {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Matches the GIF grid */
-  width: 100%;
+  grid-template-columns: repeat(5, auto); /* Ensure each column aligns with the GIFs */
+  width: 100%; /* Matches the GIF grid */
   text-align: center;
-  margin-bottom: 5px; /* Reduced spacing */
+  margin-bottom: 10px;
   font-weight: bold;
-  font-size: 14px; /* Smaller text size */
+  font-size: 14px; /* Smaller font size to fit */
 }
 
 .gif-column-header {
-  padding: 2px 0; /* Smaller padding for alignment */
+  padding: 0; /* Remove extra padding */
+  margin: 0 auto; /* Center-align titles exactly */
 }
 
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(5, auto); /* Keeps original GIF spacing */
-  gap: 10px;
+  grid-template-columns: repeat(5, auto); /* Matches header columns */
+  gap: 10px; /* Maintain spacing between columns */
+  width: 100%; /* Consistent alignment with header */
 }
 
 .gif-cell {
@@ -62,9 +64,9 @@ body {
 
 .gif-cell img {
   width: 100%;
-  max-width: 120px; /* Adjust to fit smaller GIFs */
+  max-width: 150px; /* Size of the GIFs */
   height: auto;
-  margin-bottom: 5px;
+  margin-bottom: 5px; /* Spacing between GIFs */
 }
 
 
