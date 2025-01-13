@@ -218,16 +218,23 @@ body {
 }
 
 /* Individual slide */
-.slide {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 videos per row */
-  grid-template-rows: repeat(3, auto);  /* 3 rows total */
-  gap: 1rem; /* Space between videos */
-  padding: 1rem;
-  box-sizing: border-box;
-  width: 100%;
-  justify-items: center; /* Center each video */
-}
+  /* Updated slide styles for real video and two rows of generated videos */
+  .slide {
+    display: grid;
+    grid-template-rows: auto auto auto; /* 3 rows: 1 for real, 2 for generated */
+    grid-template-columns: repeat(4, 1fr); /* 4 videos per row for generated */
+    gap: 1rem; /* Space between videos */
+    padding: 1rem;
+    box-sizing: border-box;
+    justify-items: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    width: 100%;
+  }
+
+  .real-video {
+    grid-column: 1 / -1; /* Span all columns for the real video */
+    justify-self: center; /* Center the real video horizontally */
+  }
 
 /* Individual video frame */
 .frame {
@@ -452,7 +459,8 @@ body {
     <div class="slide-container">
       <!-- Slide for 'weight' folder -->
       <div class="slide">
-        <div class="frame">
+        
+    <div class="real-video">
           <img src="../weight/real_weight.gif" alt="Real Test Frames"></img>
           <div class="caption">Real Test Frames</div>
         </div>
@@ -492,7 +500,7 @@ body {
 
       <!-- Slide for 'paint' folder -->
       <div class="slide">
-        <div class="frame">
+    <div class="real-video">
           <img src="../paint/real_paint.gif" alt="Real Test Frames"></img>
           <div class="caption">Real Test Frames</div>
         </div>
@@ -532,7 +540,7 @@ body {
 
       <!-- Slide for 'teapot' folder -->
       <div class="slide">
-        <div class="frame">
+    <div class="real-video">
           <img src="../teapot/real_teapot.gif" alt="Real Test Frames"></img>
           <div class="caption">Real Test Frames</div>
         </div>
