@@ -211,30 +211,47 @@ body {
       position: relative;
       overflow: hidden;
     }
-    .slide-container {
-  display: flex;
-  overflow: hidden;
+  /* Container for all slides */
+.slide-container {
   width: 100%;
+  overflow: hidden;
 }
 
+/* Individual slide */
 .slide {
   display: grid;
-  grid-template-rows: auto repeat(2, auto);
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem; /* Space between rows and columns */
-  width: 100%; /* Full width for each slide */
+  grid-template-columns: repeat(4, 1fr); /* 4 videos per row */
+  grid-template-rows: repeat(3, auto);  /* 3 rows total */
+  gap: 1rem; /* Space between videos */
   padding: 1rem;
   box-sizing: border-box;
+  width: 100%;
+  justify-items: center; /* Center each video */
 }
 
+/* Individual video frame */
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 180px; /* Adjust as needed for consistent size */
+}
+
+/* Style for video or GIF */
 .frame img {
   width: 100%;
+  height: auto;
   border-radius: 0.5rem;
 }
 
+/* Caption for videos */
 .caption {
-  font-size: 
-    }
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
 
 
     .arrow {
