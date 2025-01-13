@@ -627,8 +627,9 @@ body {
 <!-- Citation Section -->
 <div class="citation-section">
   <h2>Citation</h2>
-  <p>If you use our dataset and metrics, please consider citing our work:</p>
-  <pre>
+  <p>If you use our dataset and metrics, please cite our work:</p>
+  <div style="background: #f9f9f9; border: 1px solid #ccc; border-radius: 5px; padding: 1rem; position: relative;">
+    <pre style="margin: 0; font-family: monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">
 @article{physicsIQ2025,
   title={Physics-IQ Benchmark: Do generative video models learn physical principles from watching videos?},
   author={Motamed, Saman and Culp, Laura and Swersky, Kevin and Jaini, Priyank and Geirhos, Robert},
@@ -636,14 +637,35 @@ body {
   year={2025},
   url={https://arxiv.org/abs/example-url},
 }
-  </pre>
+    </pre>
+    <button onclick="copyCitation()" style="position: absolute; top: 10px; right: 10px; background: #007BFF; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.8rem;">
+      Copy
+    </button>
+  </div>
 </div>
 
 <!-- Footer Logo -->
 <footer>
-  <p></p>
-  <img src="../assets/gdm_logo.png" alt="Physics-IQ Logo">
+  <p>Thank you for visiting our benchmark!</p>
+  <img src="assets/logo.png" alt="Physics-IQ Logo" style="max-width: 60px; height: auto; margin-top: 1rem;">
 </footer>
+
+<script>
+  function copyCitation() {
+    const citation = `
+@article{physicsIQ2025,
+  title={Physics-IQ Benchmark: Do generative video models learn physical principles from watching videos?},
+  author={Motamed, Saman and Culp, Laura and Swersky, Kevin and Jaini, Priyank and Geirhos, Robert},
+  journal={ArXiv},
+  year={2025},
+  url={https://arxiv.org/abs/example-url},
+}`;
+    navigator.clipboard.writeText(citation).then(() => {
+      alert("Citation copied to clipboard!");
+    });
+  }
+</script>
+
 
 </body>
 </html>
