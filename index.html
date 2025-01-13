@@ -678,9 +678,7 @@ body {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       // Modern method using Clipboard API
       navigator.clipboard.writeText(citationText)
-        .then(() => {
-          alert("Citation copied to clipboard!");
-        })
+
         .catch(() => {
           fallbackCopy(citationText);
         });
