@@ -17,41 +17,20 @@
     }
 
     body {
-      position: relative; /* So we can use body::before behind everything */
       min-height: 100vh;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #333;
       text-align: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background: #fff; /* White behind the ducks, so edges are visible */
-    }
-
-    /* 
-      Repeated duck background at partial opacity around edges
-      (unchanged from your original code, except we can tweak the opacity if you like).
-    */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("assets/duckie.png") repeat center center;
-      background-size: 150px auto; /* Adjust duck size as needed */
-      opacity: 0.15; /* partial transparency */
-      pointer-events: none; 
-      z-index: -9999;
+      background: #fff; /* Plain white background */
     }
 
     .content-wrapper {
       max-width: 1200px;
       margin: 0 auto;
-      background: #fbf8f2; 
       min-height: 100vh; 
       position: relative; 
-      z-index: 1; 
       box-sizing: border-box;
     }
 
@@ -144,143 +123,6 @@
       margin-bottom: 1rem;
     }
 
-    .leaderboard {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      text-align: center;
-    }
-    .leaderboard-table {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      border-collapse: collapse;
-    }
-    .leaderboard-table th,
-    .leaderboard-table td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #ddd;
-    }
-    .leaderboard-table th {
-      background: #f2eee8;
-      font-weight: 600;
-    }
-    .leaderboard-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* 
-       Updated repeating pattern to 10% chunks, e.g. 
-       10% shading + 10% gap => each chunk is 20% wide,
-       or do 10% shading, 10% gap => total 20% repeating length.
-
-       We'll just do 10% shading and 10% gap for a clearer chunk.
-       Also, we can saturate the shading color more (a darker gray).
-    */
-    .progress {
-      width: 100%;
-      background: repeating-linear-gradient(
-        to right,
-        #ccc 0%,
-        #ccc 10%,
-        transparent 10%,
-        transparent 20%
-      );
-      background-size: 20% 100%; /* each chunk is 20% wide, so 10% is shading, 10% is transparent */
-      border-radius: 0.25rem;
-      overflow: hidden;
-      margin: 0.25rem 0;
-      position: relative;
-      height: 1.5rem;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background-color: #2255FF; 
-      border-radius: 0.25rem 0 0 0.25rem;
-      text-align: right;
-      box-sizing: border-box;
-      position: relative;
-
-      /* Store the actual numeric value in a data attribute, e.g. data-score="20.7%" */
-    }
-    /* Hover tooltip for the progress bar: 
-       We'll create a small tooltip that appears above the bar.
-       This is a pure CSS approach using the ::after pseudo-element.
-    */
-    .progress-bar:hover::after {
-      content: attr(data-score); /* read from data-score attribute */
-      position: absolute;
-      top: -2rem; /* position above the bar */
-      right: 0;   /* or left: 0, if you prefer */
-      background: #333;
-      color: #fff;
-      padding: 2px 6px;
-      font-size: 0.8rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    /* Carousel / Video Samples */
-    .video-samples {
-      max-width: 800px;
-      margin: 2rem auto;
-      position: relative;
-      overflow: hidden;
-    }
-    .slides-container {
-      display: flex;
-      transition: transform 0.3s ease-in-out;
-    }
-    .slide {
-      min-width: 100%;
-      display: flex;
-      justify-content: space-around;
-      gap: 1rem;
-      padding: 0 1rem;
-      box-sizing: border-box;
-    }
-    .frame {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 48%;
-    }
-    .frame video {
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-    .caption {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.25rem;
-      text-align: center;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 0.75rem;
-      cursor: pointer;
-      border-radius: 9999px;
-      user-select: none;
-      font-size: 1.25rem;
-      line-height: 1.25rem;
-      z-index: 10;
-    }
-    .arrow:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
-    .arrow-left {
-      left: 30px;
-    }
-    .arrow-right {
-      right: 30px;
-    }
-
     footer {
       margin: 2rem 0;
       color: #999;
@@ -290,50 +132,6 @@
   </style>
 </head>
 <body>
-
-  <div class="content-wrapper">
-    <!-- Teaser Video at the Top -->
-    <div class="teaser-container">
-      <video src="assets/teaser.mp4" controls autoplay loop muted></video>
-    </div>
-
-    <header>
-      <h1>Physics IQ Benchmark:<br>Do generative video models learn physical principles from watching videos?</h1>
-      <div class="authors">
-          <a href="https://sam-motamed.github.io/" target="_blank">Saman Motamed</a><sup>1,*</sup>, 
-          <a href="https://scholar.google.com/citations?user=vEZUEOQAAAAJ&hl=en" target="_blank">Laura Culp</a><sup>2</sup>, 
-          <a href="https://scholar.google.com/citations?user=IrixA8MAAAAJ&hl=en" target="_blank">Kevin Swersky</a><sup>2</sup>, 
-          <a href="https://priyankjaini.github.io/" target="_blank">Priyank Jaini</a><sup>2,†</sup>, 
-          <a href="https://robertgeirhos.com/" target="_blank">Robert Geirhos</a><sup>2,†</sup>
-      </div>
-      <div class="affiliations">
-          <strong>1:</strong> INSAIT, Sofia University &nbsp;&nbsp;
-          <strong>2:</strong> Google DeepMind
-      </div>
-      <div class="asterisk-note">
-          * Work done while at Google DeepMind.<br>
-          † Joint last authors.
-      </div>
-
-
-    </header>
-
-    <!-- Buttons -->
-    <div class="buttons">
-      <!-- Replace # with actual links -->
-      <a class="btn-link" href="#" target="_blank">
-        <img src="assets/arxiv-logo.png" alt="arXiv Logo" class="logo logo-original">Paper
-      </a>
-      <a class="btn-link" href="#" target="_blank">
-        <img src="assets/github-logo.png" alt="GitHub Logo" class="logo logo-bigger">Code
-      </a>
-      <a class="btn-link" href="#" target="_blank">
-        <img src="assets/huggingface-logo.png" alt="Hugging Face Logo" class="logo logo-original logo-bigger">HuggingFace
-      </a>
-      <a class="btn-link" href="#" target="_blank">
-        <img src="assets/data-logo.png" alt="Data Logo" class="logo">Data
-      </a>
-    </div>
 
     <!-- TL;DR -->
     <div class="section-wrapper">
