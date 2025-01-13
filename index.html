@@ -35,6 +35,27 @@ body {
   z-index: 1; 
   box-sizing: border-box;
 }
+    .pdf-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content vertically */
+    margin: 2rem auto;
+  }
+
+  .pdf-container img {
+    max-width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 8px; /* Adds rounded corners (optional) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow (optional) */
+  }
+
+  .pdf-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+  }
 
 
 
@@ -350,11 +371,11 @@ body {
     </div>
 
 
-    <div class="frame">
-          <img src="../assets/category_samples.pdf""></img>
-          <div class="caption">Physics IQ tests physics understadning across 5 categories</div>
-        </div>
-    
+
+    <div class="pdf-container">
+  <img src="../assets/category_samples.pdf" alt="Preview of PDF">
+  <div class="pdf-caption">Physics IQ tests physics understadning across 5 categories</div>
+  </div>
     <!-- Abstract -->
     <div class="section-wrapper">
       <h2>Abstract 📣</h2>
