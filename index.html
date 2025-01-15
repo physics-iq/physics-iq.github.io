@@ -299,7 +299,12 @@ body {
     grid-column: 1 / -1; /* Span all columns for the real video */
     justify-self: center; /* Center the real video horizontally */
   }
-
+.real-video img {
+  width: 660px; /* Fixed width */
+  height: 371px; /* Fixed height */
+  object-fit: cover; /* Ensures aspect ratio doesn't distort */
+  border-radius: 0.5rem; /* Optional: Rounded corners */
+}
   
 /* Individual video frame */
 .frame {
