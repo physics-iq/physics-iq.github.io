@@ -244,25 +244,26 @@ body {
     position: relative;
     overflow: hidden;
   }
-
-  .progress-bar {
+.progress-bar {
   height: 100%;
   border-radius: 5px;
-  text-align: center; /* Center the text horizontally */
-  color: white; /* Text color inside the progress bar */
+  text-align: right; /* Align text to the right (empty portion of the bar) */
+  position: relative; /* Enable positioning of the text */
   font-size: 12px; /* Font size for percentage text */
-  line-height: 20px; /* Matches the height for vertical centering */
-  position: relative; /* Ensures positioning for the text */
+  background-color: #007bff; /* Color of the filled portion */
+  color: white; /* Color for filled text (if needed) */
 }
 
 .progress-bar::after {
   content: attr(data-score); /* Display the percentage from the data-score attribute */
   position: absolute;
   top: 50%; /* Vertically center the text */
-  left: 50%; /* Horizontally center the text */
-  transform: translate(-50%, -50%); /* Adjust positioning to truly center the text */
+  right: 5px; /* Position the text in the empty portion of the bar */
+  transform: translateY(-50%); /* Adjust vertical alignment */
   font-weight: bold; /* Make the text bold for better visibility */
+  color: black; /* Set text color to black for the empty portion */
 }
+
 
   
 
