@@ -246,26 +246,24 @@ body {
   }
 
   .progress-bar {
-    height: 100%;
-    border-radius: 5px;
-    text-align: center;
-    color: white; /* Text color inside the progress bar */
-    font-size: 12px;
-    line-height: 20px;
-  }
+  height: 100%;
+  border-radius: 5px;
+  text-align: center; /* Center the text horizontally */
+  color: white; /* Text color inside the progress bar */
+  font-size: 12px; /* Font size for percentage text */
+  line-height: 20px; /* Matches the height for vertical centering */
+  position: relative; /* Ensures positioning for the text */
+}
 
-  .progress-bar:hover::after {
-    content: attr(data-score);
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 12px;
-  }
+.progress-bar::after {
+  content: attr(data-score); /* Display the percentage from the data-score attribute */
+  position: absolute;
+  top: 50%; /* Vertically center the text */
+  left: 50%; /* Horizontally center the text */
+  transform: translate(-50%, -50%); /* Adjust positioning to truly center the text */
+  font-weight: bold; /* Make the text bold for better visibility */
+}
+
   
 
     /* Carousel / Video Samples */
