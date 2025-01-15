@@ -56,10 +56,15 @@ body {
   margin: 0; /* Eliminate extra margins around header */
 }
 
+/* GIF Grid */
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Ensure GIFs align with headers */
-  gap: 5px; /* Maintain small gaps between GIFs */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamic columns */
+  gap: 20px; /* Space between GIFs */
+  justify-content: center; /* Center the grid horizontally */
+  padding: 20px 0; /* Add padding above and below the grid */
+  max-width: 1200px; /* Limit grid width */
+  margin: 0 auto; /* Center grid */
 }
 
 .gif-cell {
@@ -70,10 +75,15 @@ body {
 }
 
 .gif-cell img {
-  width: 100%;
-  max-width: 180px; /* Adjust GIF size if needed */
-  height: auto;
-  margin-bottom: 2px; /* Small margin between stacked GIFs */
+  max-width: 100%; /* Prevent overflow */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.gif-cell .caption {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #666;
 }
 
 
