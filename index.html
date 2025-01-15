@@ -227,49 +227,37 @@ body {
        We'll just do 10% shading and 10% gap for a clearer chunk.
        Also, we can saturate the shading color more (a darker gray).
     */
-    .progress {
-      width: 100%;
-      background: repeating-linear-gradient(
-        to right,
-        #ccc 0%,
-        #ccc 10%,
-        transparent 10%,
-        transparent 20%
-      );
-      background-size: 20% 100%; /* each chunk is 20% wide, so 10% is shading, 10% is transparent */
-      border-radius: 0.25rem;
-      overflow: hidden;
-      margin: 0.25rem 0;
-      position: relative;
-      height: 1.5rem;
-    }
+     /* Progress bar styles */
+  .progress {
+    background-color: #e0e0e0; /* Light gray for background */
+    border-radius: 5px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .progress-bar {
-      height: 100%;
-      background-color: #2255FF; 
-      border-radius: 0.25rem 0 0 0.25rem;
-      text-align: right;
-      box-sizing: border-box;
-      position: relative;
+  .progress-bar {
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    color: white; /* Text color inside the progress bar */
+    font-size: 12px;
+    line-height: 20px;
+  }
 
-      /* Store the actual numeric value in a data attribute, e.g. data-score="20.7%" */
-    }
-    /* Hover tooltip for the progress bar: 
-       We'll create a small tooltip that appears above the bar.
-       This is a pure CSS approach using the ::after pseudo-element.
-    */
-    .progress-bar:hover::after {
-      content: attr(data-score); /* read from data-score attribute */
-      position: absolute;
-      top: -2rem; /* position above the bar */
-      right: 0;   /* or left: 0, if you prefer */
-      background: #333;
-      color: #fff;
-      padding: 2px 6px;
-      font-size: 0.8rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
+  .progress-bar:hover::after {
+    content: attr(data-score);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  
 
     /* Carousel / Video Samples */
     .video-samples {
@@ -472,7 +460,7 @@ body {
 <div class="section-wrapper">
   <h2>Podcast 📻</h2>
       <p>
-                    On a run and want to get a gist of our paper? Listen to the following podcast
+                    On a run and want to get a gist of our paper? Listen to the following podcast!
       </p>
   </div>
     
@@ -640,84 +628,83 @@ body {
 
 
     <!-- Leaderboard -->
-    <div class="leaderboard">
-      <h2>Leaderboard 🥇</h2>
-      <table class="leaderboard-table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Physics IQ Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
-            <td>
-              <!-- Add data-score attribute for hover tooltip -->
-              <div class="progress">
-                <div class="progress-bar" style="width:20.7%;" data-score="24.1  AWSEDRFTYGFRDE  %"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Runway Gen 3 (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:18.4%;" data-score="16.2%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Lumiere (multiframe)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:18.2%;" data-score="15.7%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>VideoPoet (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:15%;" data-score="18.0%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Lumiere (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:11.9%;" data-score="17.1%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>stable Video Diffusion (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:10.9%;" data-score="13.5%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Pika 1.0 (i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:9.5%;" data-score="9.2%"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Sora(i2v)</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar" style="width:8.7%;" data-score="8.8%"></div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="leaderboard">
+  <h2>Leaderboard 🥇</h2>
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Physics IQ Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:20.7%; background-color:#CC5500;" data-score="24.1%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Runway Gen 3 (i2v)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:18.4%; background-color:#2ca02c;" data-score="16.2%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Lumiere (multiframe)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:18.2%; background-color:#1C69A7;" data-score="15.7%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>VideoPoet (i2v)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:15%; background-color:#FF7F0E;" data-score="18.0%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Lumiere (i2v)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:11.9%; background-color:#17BECF;" data-score="17.1%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Stable Video Diffusion (i2v)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:10.9%; background-color:#9467BD;" data-score="13.5%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Pika 1.0 (i2v)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:9.5%; background-color:#FFD700; color:black;" data-score="9.2%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Sora (i2v)</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:8.7%; background-color:#ff0606;" data-score="8.8%"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="citation-section">
   <h2>BibTeX 😊</h2>
