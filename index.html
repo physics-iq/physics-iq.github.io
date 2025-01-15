@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" href="assets/duckie.png" />
 
   <style>
- html, body {
+    /* Reset default margins/padding */
+    html, body {
   margin: 0;
   padding: 0;
   height: 100%; 
@@ -56,15 +57,10 @@ body {
   margin: 0; /* Eliminate extra margins around header */
 }
 
-/* GIF Grid */
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamic columns */
-  gap: 20px; /* Space between GIFs */
-  justify-content: center; /* Center the grid horizontally */
-  padding: 20px 0; /* Add padding above and below the grid */
-  max-width: 1200px; /* Limit grid width */
-  margin: 0 auto; /* Center grid */
+  grid-template-columns: repeat(5, 1fr); /* Ensure GIFs align with headers */
+  gap: 5px; /* Maintain small gaps between GIFs */
 }
 
 .gif-cell {
@@ -75,15 +71,10 @@ body {
 }
 
 .gif-cell img {
-  max-width: 100%; /* Prevent overflow */
-  border-radius: 10px; /* Rounded corners */
-}
-
-.gif-cell .caption {
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 5px;
-  color: #666;
+  width: 100%;
+  max-width: 180px; /* Adjust GIF size if needed */
+  height: auto;
+  margin-bottom: 2px; /* Small margin between stacked GIFs */
 }
 
 
@@ -305,46 +296,33 @@ body {
   }
 
   .real-video {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers the content horizontally */
-  margin-bottom: 20px; /* Adds space below the real GIF */
+  max-width: 800px; /* Limit the width of the video */
+  margin: 0 auto; /* Center the video horizontally */
+  text-align: center; /* Center the content inside the div */
 }
-
-.real-video img {
-  max-width: 800px; /* Set a maximum width for the GIF */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 10px; /* Optional: Rounded corners */
-}
-
-.real-video .caption {
-  font-size: 1rem;
-  color: #666;
-  margin-top: 5px;
-  text-align: center;
-}
-
-
 
   
-/* Frame (Individual GIF Styling) */
+/* Individual video frame */
 .frame {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 200px; /* Adjust as needed for consistent size */
 }
 
+/* Style for video or GIF */
 .frame img {
   width: 100%;
   height: auto;
-  border-radius: 10px; /* Optional: Rounded corners */
+  border-radius: 0.5rem;
 }
 
-.frame .caption {
-  text-align: center;
+/* Caption for videos */
+.caption {
   font-size: 0.9rem;
-  margin-top: 5px;
   color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 
@@ -591,176 +569,156 @@ body {
     <h2>Examples 🎞️</h2>
   </div>
 
- <!-- Navigation and Video Samples -->
-<div class="video-samples">
-  <div class="slide-container">
-
-    <!-- Slide for 'weight' folder -->
-    <div class="slide">
-      <!-- Real GIF -->
-      <div class="real-video">
-        <img src="../weight/real_weight.gif" alt="Real Test Frames">
-        <div class="caption">Real Test Frames</div>
-      </div>
-
-      <!-- Generated GIFs -->
-      <div class="gif-grid">
+  <!-- Navigation and Video Samples -->
+  <div class="video-samples">
+    <div class="slide-container">
+      <!-- Slide for 'weight' folder -->
+      <div class="slide">
+        
+    <div class="real-video">
+          <video src="../weight/real_weight.mp4" alt="Real Test Frames"></video>
+          <div class="caption">Real Test Frames</div>
+        </div>
         <div class="frame">
-          <img src="../weight/vp_m_weight.gif" alt="VideoPoet (multiframe)">
+          <img src="../weight/vp_m_weight.gif" alt="VideoPoet (multiframe)"></img>
           <div class="caption">VideoPoet (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../weight/vp_i2v_weight.gif" alt="VideoPoet (i2v)">
+          <img src="../weight/vp_i2v_weight.gif" alt="VideoPoet (i2v)"></img>
           <div class="caption">VideoPoet (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../weight/sora_weight.gif" alt="Sora (i2v)">
+          <img src="../weight/sora_weight.gif" alt="Sora (i2v)"></img>
           <div class="caption">Sora (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../weight/pika_weight.gif" alt="Pika 1.0 (i2v)">
+          <img src="../weight/pika_weight.gif" alt="Pika 1.0 (i2v)"></img>
           <div class="caption">Pika 1.0 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../weight/runway_weight.gif" alt="Runway Gen 3 (i2v)">
+          <img src="../weight/runway_weight.gif" alt="Runway Gen 3 (i2v)"></img>
           <div class="caption">Runway Gen 3 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../weight/lum_m_weight.gif" alt="Lumiere (multiframe)">
+          <img src="../weight/lum_m_weight.gif" alt="Lumiere (multiframe)"></img>
           <div class="caption">Lumiere (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../weight/lum_i2v_weight.gif" alt="Lumiere (i2v)">
+          <img src="../weight/lum_i2v_weight.gif" alt="Lumiere (i2v)"></img>
           <div class="caption">Lumiere (i2v)</div>
         </div>
       </div>
-    </div>
 
-    <!-- Slide for 'paint' folder -->
-    <div class="slide">
-      <!-- Real GIF -->
-      <div class="real-video">
-        <img src="../paint/real_paint.gif" alt="Real Test Frames">
-        <div class="caption">Real Test Frames</div>
-      </div>
-
-      <!-- Generated GIFs -->
-      <div class="gif-grid">
+      <!-- Slide for 'paint' folder -->
+      <div class="slide">
+    <div class="real-video">
+          <video src="../paint/real_paint.mp4" alt="Real Test Frames"></video>
+          <div class="caption">Real Test Frames</div>
+        </div>
         <div class="frame">
-          <img src="../paint/vp_m_paint.gif" alt="VideoPoet (multiframe)">
+          <img src="../paint/vp_m_paint.gif" alt="VideoPoet (multiframe)"></img>
           <div class="caption">VideoPoet (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../paint/vp_i2v_paint.gif" alt="VideoPoet (i2v)">
+          <img src="../paint/vp_i2v_paint.gif" alt="VideoPoet (i2v)"></img>
           <div class="caption">VideoPoet (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../paint/sora_paint.gif" alt="Sora (i2v)">
+          <img src="../paint/sora_paint.gif" alt="Sora (i2v)"></img>
           <div class="caption">Sora (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../paint/pika_paint.gif" alt="Pika 1.0 (i2v)">
+          <img src="../paint/pika_paint.gif" alt="Pika 1.0 (i2v)"></img>
           <div class="caption">Pika 1.0 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../paint/runway_paint.gif" alt="Runway Gen 3 (i2v)">
+          <img src="../paint/runway_paint.gif" alt="Runway Gen 3 (i2v)"></img>
           <div class="caption">Runway Gen 3 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../paint/lum_m_paint.gif" alt="Lumiere (multiframe)">
+          <img src="../paint/lum_m_paint.gif" alt="Lumiere (multiframe)"></img>
           <div class="caption">Lumiere (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../paint/lum_i2v_paint.gif" alt="Lumiere (i2v)">
+          <img src="../paint/lum_i2v_paint.gif" alt="Lumiere (i2v)"></img>
           <div class="caption">Lumiere (i2v)</div>
         </div>
       </div>
-    </div>
 
-    <!-- Slide for 'teapot' folder -->
-    <div class="slide">
-      <!-- Real GIF -->
-      <div class="real-video">
-        <img src="../teapot/real_teapot.gif" alt="Real Test Frames">
-        <div class="caption">Real Test Frames</div>
-      </div>
-
-      <!-- Generated GIFs -->
-      <div class="gif-grid">
+      <!-- Slide for 'teapot' folder -->
+      <div class="slide">
+    <div class="real-video">
+          <video src="../teapot/real_teapot.mp4" alt="Real Test Frames"></video>
+          <div class="caption">Real Test Frames</div>
+        </div>
         <div class="frame">
-          <img src="../teapot/vp_m_teapot.gif" alt="VideoPoet (multiframe)">
+          <img src="../teapot/vp_m_teapot.gif" alt="VideoPoet (multiframe)"></img>
           <div class="caption">VideoPoet (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../teapot/vp_i2v_teapot.gif" alt="VideoPoet (i2v)">
+          <img src="../teapot/vp_i2v_teapot.gif" alt="VideoPoet (i2v)"></img>
           <div class="caption">VideoPoet (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../teapot/sora_teapot.gif" alt="Sora (i2v)">
+          <img src="../teapot/sora_teapot.gif" alt="Sora (i2v)"></img>
           <div class="caption">Sora (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../teapot/pika_teapot.gif" alt="Pika 1.0 (i2v)">
+          <img src="../teapot/pika_teapot.gif" alt="Pika 1.0 (i2v)"></img>
           <div class="caption">Pika 1.0 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../teapot/runway_teapot.gif" alt="Runway Gen 3 (i2v)">
+          <img src="../teapot/runway_teapot.gif" alt="Runway Gen 3 (i2v)"></img>
           <div class="caption">Runway Gen 3 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../teapot/lum_m_teapot.gif" alt="Lumiere (multiframe)">
+          <img src="../teapot/lum_m_teapot.gif" alt="Lumiere (multiframe)"></img>
           <div class="caption">Lumiere (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../teapot/lum_i2v_teapot.gif" alt="Lumiere (i2v)">
+          <img src="../teapot/lum_i2v_teapot.gif" alt="Lumiere (i2v)"></img>
           <div class="caption">Lumiere (i2v)</div>
         </div>
       </div>
-    </div>
 
-    <!-- Slide for 'match' folder -->
-    <div class="slide">
-      <!-- Real GIF -->
-      <div class="real-video">
-        <img src="../match/real_match.gif" alt="Real Test Frames">
-        <div class="caption">Real Test Frames</div>
-      </div>
-
-      <!-- Generated GIFs -->
-      <div class="gif-grid">
+      <!-- Slide for 'match' folder -->
+      <div class="slide">
+    <div class="real-video">
+          <video src="../match/real_match.mp4" alt="Real Test Frames"></video>
+          <div class="caption">Real Test Frames</div>
+        </div>
         <div class="frame">
-          <img src="../match/vp_m_match.gif" alt="VideoPoet (multiframe)">
+          <img src="../match/vp_m_match.gif" alt="VideoPoet (multiframe)"></img>
           <div class="caption">VideoPoet (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../match/vp_i2v_match.gif" alt="VideoPoet (i2v)">
+          <img src="../match/vp_i2v_match.gif" alt="VideoPoet (i2v)"></img>
           <div class="caption">VideoPoet (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../match/sora_match.gif" alt="Sora (i2v)">
+          <img src="../match/sora_match.gif" alt="Sora (i2v)"></img>
           <div class="caption">Sora (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../match/pika_match.gif" alt="Pika 1.0 (i2v)">
+          <img src="../match/pika_match.gif" alt="Pika 1.0 (i2v)"></img>
           <div class="caption">Pika 1.0 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../match/runway_match.gif" alt="Runway Gen 3 (i2v)">
+          <img src="../match/runway_match.gif" alt="Runway Gen 3 (i2v)"></img>
           <div class="caption">Runway Gen 3 (i2v)</div>
         </div>
         <div class="frame">
-          <img src="../match/lum_m_match.gif" alt="Lumiere (multiframe)">
+          <img src="../match/lum_m_match.gif" alt="Lumiere (multiframe)"></img>
           <div class="caption">Lumiere (multiframe)</div>
         </div>
         <div class="frame">
-          <img src="../match/lum_i2v_match.gif" alt="Lumiere (i2v)">
+          <img src="../match/lum_i2v_match.gif" alt="Lumiere (i2v)"></img>
           <div class="caption">Lumiere (i2v)</div>
         </div>
       </div>
+      
     </div>
-
   </div>
-</div>
 
 
  
