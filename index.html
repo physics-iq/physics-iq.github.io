@@ -10,16 +10,12 @@
 
   <style>
     /* Reset default margins/padding */
-    html, body {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%; 
 }
-.affiliations span {
-    display: inline; /* Ensure no additional spacing is introduced */
-    margin: 0;
-    padding: 0;
-  }
+
 body {
   min-height: 100vh;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -30,349 +26,195 @@ body {
   background: #fff; /* Plain white background */
 }
 
-  .blue { color: #4285F4; } /* Blue */
-  .red { color: #EA4335; }  /* Red */
-  .yellow { color: #FBBC05; } /* Yellow */
-  .green { color: #34A853; } /* Green */
-    
- .gif-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* Colors */
+.blue { color: #4285F4; } /* Blue */
+.red { color: #EA4335; }  /* Red */
+.yellow { color: #FBBC05; } /* Yellow */
+.green { color: #34A853; } /* Green */
 
-.gif-header {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Equal column distribution */
-  width: 100%;
-  text-align: center;
-  margin-bottom: 5px; /* Reduce gap between header and GIFs */
-  font-weight: bold;
-  font-size: 10px; /* Adjust header text size to fit */
-}
-
-.gif-column-header {
-  padding: 0; /* Remove extra padding around text */
-  margin: 0; /* Eliminate extra margins around header */
-}
-
-.gif-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Ensure GIFs align with headers */
-  gap: 5px; /* Maintain small gaps between GIFs */
-}
-
-.gif-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.gif-cell img {
-  width: 100%;
-  max-width: 180px; /* Adjust GIF size if needed */
-  height: auto;
-  margin-bottom: 2px; /* Small margin between stacked GIFs */
-}
-
-
-
-    
-
+/* Content Wrapper */
 .content-wrapper {
-  max-width: 800px;
+  max-width: 1200px; /* Increase to accommodate wider layouts */
   margin: 0 auto;
-  background: #fff; /* Change to white */
+  background: #fff; 
   min-height: 100vh; 
   position: relative; 
   z-index: 1; 
   box-sizing: border-box;
 }
-    .pdf-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the content horizontally */
-    justify-content: center; /* Centers the content vertically */
-    margin: 2rem auto;
-  }
 
-  .pdf-container img {
-    max-width: 60%; /* Ensures the image is responsive */
-    height: auto; /* Maintains aspect ratio */
-    border-radius: 8px; /* Adds rounded corners (optional) */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow (optional) */
-  }
-
-  .pdf-caption {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #555;
-    text-align: center;
-  }
-
-
-
-    .teaser-container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    video {
-      width: 100%;
-      height: auto;
-      border-radius: 0.75rem; 
-    }
-
-    header {
-      padding: 1.5rem 1rem;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: 2rem;
-      margin: 0 0 0.5rem;
-      line-height: 1.2;
-    }
-    .authors {
-      font-size: 1rem;
-      color: #555;
-      margin-top: 0.5rem;
-    }
-    .affiliations {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.5rem;
-    }
-    .asterisk-note {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: #666;
-      display: block;
-      margin-top: 0.5rem;
-    }
-
-    .buttons {
-      margin: 1.5rem auto;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .btn-link {
-      display: inline-flex;
-      align-items: center;
-      background: #000;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 9999px;
-      padding: 0.5rem 1rem;
-      transition: background 0.2s ease-in-out;
-      font-weight: 500;
-      border: none;
-    }
-    .btn-link:hover {
-      background: #333;
-    }
-    .logo {
-      width: 20px;
-      height: auto;
-      margin-right: 0.5rem;
-      filter: invert(1);
-    }
-    .logo-original {
-      filter: none !important;
-    }
-    .logo-bigger {
-      width: 24px !important;
-    }
-
-    .section-wrapper {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      text-align: left;
-    }
-    .section-wrapper h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .section-wrapper p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .leaderboard {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      text-align: center;
-    }
-    .leaderboard-table {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      border-collapse: collapse;
-    }
-    .leaderboard-table th,
-    .leaderboard-table td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #ddd;
-    }
-    .leaderboard-table th {
-      background: #f2eee8;
-      font-weight: 600;
-    }
-    .leaderboard-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* 
-       Updated repeating pattern to 10% chunks, e.g. 
-       10% shading + 10% gap => each chunk is 20% wide,
-       or do 10% shading, 10% gap => total 20% repeating length.
-
-       We'll just do 10% shading and 10% gap for a clearer chunk.
-       Also, we can saturate the shading color more (a darker gray).
-    */
-     /* Progress bar styles */
-  .progress {
-    background-color: #e0e0e0; /* Light gray for background */
-    border-radius: 5px;
-    height: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .progress-bar {
-    height: 100%;
-    border-radius: 5px;
-    text-align: center;
-    color: white; /* Text color inside the progress bar */
-    font-size: 12px;
-    line-height: 20px;
-  }
-
-  .progress-bar:hover::after {
-    content: attr(data-score);
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 12px;
-  }
-  
-
-    /* Carousel / Video Samples */
-    .video-samples {
-      max-width: 800px;
-      margin: 1rem auto;
-      position: relative;
-      overflow: hidden;
-    }
-  /* Container for all slides */
-.slide-container {
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Individual slide */
-  /* Updated slide styles for real video and two rows of generated videos */
-  .slide {
-    display: grid;
-    grid-template-rows: auto auto auto; /* 3 rows: 1 for real, 2 for generated */
-    grid-template-columns: repeat(3, 1fr); /* 3 videos per row for generated */
-    gap: 1rem; /* Space between videos */
-    padding: 1rem;
-    box-sizing: border-box;
-    justify-items: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-    width: 100%;
-  }
-
-  .real-video {
+/* Real Video Section */
+.real-video {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the content horizontally */
-  margin-bottom: 20px; /* Adds space below the real GIF */
+  align-items: center; /* Centers the real GIF horizontally */
+  margin-bottom: 30px; /* Add space below the real GIF */
+  width: 100%;
 }
 
 .real-video img {
-  max-width: 800px; /* Set a maximum width for the GIF */
+  max-width: 800px; /* Set a maximum width */
   height: auto; /* Maintain aspect ratio */
   border-radius: 10px; /* Optional: Rounded corners */
 }
 
 .real-video .caption {
-  font-size: 1rem;
-  color: #666;
-  margin-top: 5px;
   text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #666;
 }
 
+/* GIF Grid */
+.gif-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Dynamic columns */
+  gap: 15px; /* Increase spacing between GIFs */
+  justify-content: center; /* Center grid horizontally */
+  padding: 10px 0; /* Add spacing above and below the grid */
+  width: 100%; /* Ensure the grid spans the container */
+  max-width: 1200px; /* Optional: Limit grid width */
+}
 
-  
-/* Individual video frame */
+.gif-cell img {
+  max-width: 180px; /* Set a max width for each image */
+  height: auto;
+  margin-bottom: 5px; /* Add space below each image */
+}
+
+/* Individual Frames */
 .frame {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 200px; /* Adjust as needed for consistent size */
+  max-width: 200px; /* Adjust width */
 }
 
-/* Style for video or GIF */
 .frame img {
   width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+  border-radius: 10px; /* Rounded corners */
 }
 
-/* Caption for videos */
-.caption {
+.frame .caption {
+  text-align: center;
   font-size: 0.9rem;
   color: #666;
-  margin-top: 0.5rem;
+  margin-top: 5px;
+}
+
+/* Section Headers */
+.section-wrapper {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.section-wrapper h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
+.section-wrapper p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
 
+/* Navigation and Video Samples */
+.video-samples {
+  max-width: 1200px;
+  margin: 1rem auto;
+  position: relative;
+  overflow: hidden;
+}
 
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 0.75rem;
-      cursor: pointer;
-      border-radius: 9999px;
-      user-select: none;
-      font-size: 1.25rem;
-      line-height: 1.25rem;
-      z-index: 10;
-    }
-    .arrow:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
-    .arrow-left {
-      left: 30px;
-    }
-    .arrow-right {
-      right: 30px;
-    }
+.slide-container {
+  width: 100%;
+  padding: 0 20px; /* Add horizontal padding */
+}
 
-    footer {
-      margin: 2rem 0;
-      color: #999;
-      font-size: 0.9rem;
-      text-align: center;
-    }
+/* Individual Slide */
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px; /* Space between slides */
+}
+
+/* Progress Bars (Optional for Leaderboard) */
+.progress {
+  background-color: #e0e0e0; /* Light gray for background */
+  border-radius: 5px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+  text-align: center;
+  color: white; /* Text color inside the progress bar */
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.progress-bar:hover::after {
+  content: attr(data-score);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+/* Buttons (Optional) */
+.buttons {
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s ease-in-out;
+  font-weight: 500;
+  border: none;
+}
+
+.btn-link:hover {
+  background: #333;
+}
+
+/* Footer */
+footer {
+  margin: 2rem 0;
+  color: #999;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
