@@ -14,10 +14,17 @@
       padding: 0;
     }
 
+    .banner-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
     .banner {
-      width: 100%;
+      max-width: 100%;
+      height: auto;
       display: block;
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem;
     }
 
     .section {
@@ -96,7 +103,9 @@
   </style>
 </head>
 <body>
-  <img class="banner" src="./workshop/iccv-challenge-duck.jpg" alt="Physics-IQ x Perception Test Banner">
+  <div class="banner-wrapper">
+    <img class="banner" src="workshop/iccv-challenge-duck.jpg" alt="Physics-IQ x Perception Test Banner">
+  </div>
 
   <div class="section">
     <h1>Physics-IQ x Perception Test Challenge</h1>
