@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Physics-IQ Guest Challenge @ ICCV 2025</title>
@@ -158,7 +160,10 @@
   </style>
 </head>
 <body>
+
   
+  <div id="tsparticles" style="position: fixed; z-index: -1; top: 0; left: 0; width: 100%; height: 100%;"></div>
+
 <h1>Physics-IQ Challenge @ ICCV 2025</h1>
 
 <div class="banner-wrapper">
@@ -265,5 +270,40 @@
   <footer>
     &copy; 2025 Physics-IQ Benchmark Team — All Rights Reserved
   </footer>
+
+
+<script>
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    background: { color: "#fefefe" },
+    particles: {
+      number: { value: 50 },
+      size: { value: 4 },
+      move: { enable: true, speed: 1 },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      color: { value: "#1a73e8" },
+      links: {
+        enable: true,
+        distance: 150,
+        color: "#1a73e8",
+        opacity: 0.4
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        onClick: { enable: true, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 100 },
+        push: { quantity: 4 }
+      }
+    }
+  });
+</script>
+
+
+  
 </body>
 </html>
