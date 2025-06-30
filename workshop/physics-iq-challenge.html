@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Physics-IQ Guest Challenge @ ICCV 2025</title>
-  
-  <!-- Description and Keywords -->
+
+  <!-- SEO & Social -->
   <meta name="description" content="Test your model’s physical reasoning in the Physics-IQ Challenge at ICCV 2025. Evaluate video models on physical plausibility with real-world benchmarks.">
   <meta name="keywords" content="Physics-IQ, ICCV 2025, physical reasoning, video generation, benchmark, challenge, perception test">
-
-  <!-- Canonical -->
   <link rel="canonical" href="https://physics-iq.github.io/workshop/physics-iq-challenge.html">
 
   <!-- Open Graph -->
@@ -27,18 +24,11 @@
   <meta name="twitter:description" content="Test your model’s physical reasoning in the Physics-IQ Challenge at ICCV 2025.">
   <meta name="twitter:image" content="https://physics-iq.github.io/workshop/assets/bannerPT.png">
 
+  <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-</head>
 
-
-
-  <meta charset="UTF-8">
-  <meta name="description" content="Join the Physics-IQ Challenge at ICCV 2025 to evaluate physical reasoning in generative video models using real-world videos.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physics-IQ Guest Challenge @ ICCV 2025</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <!-- Styles -->
   <style>
-    
     body {
       font-family: 'Inter', sans-serif;
       background-color: #fefefe;
@@ -47,22 +37,29 @@
       padding: 0;
     }
 
-.banner-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-.banner {
-  width: 50%;
-  height: auto;
-  display: block;
-  border-radius: 12px; /* optional: adds rounded corners */
-}
+    .banner-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
 
-
-
+    .banner {
+      width: 50%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
 
     .section {
       max-width: 900px;
@@ -109,7 +106,7 @@
       background: #155ec0;
     }
 
-    .organizers {
+    .organizers, .speakers {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -117,39 +114,27 @@
       margin-top: 2rem;
     }
 
-    .organizer {
+    .organizer, .speaker {
       text-align: center;
       width: 140px;
     }
 
-    .organizer img {
+    .organizer img, .speaker img {
       width: 100px;
       height: 100px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid #ccc;
     }
-    .speakers {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
 
     .speaker {
-      text-align: center;
       width: 180px;
     }
 
     .speaker img {
       width: 140px;
       height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #ccc;
     }
-
 
     footer {
       text-align: center;
@@ -162,32 +147,29 @@
 </head>
 <body>
 
-  
-  <div id="tsparticles" style="position: fixed; z-index: -1; top: 0; left: 0; width: 100%; height: 100%;"></div>
+  <div id="tsparticles"></div>
 
-<h1>Physics-IQ Challenge @ ICCV 2025</h1>
+  <h1>Physics-IQ Challenge @ ICCV 2025</h1>
 
-<div class="banner-wrapper">
-  <img class="banner" src="./challenge_teaser.png" alt="Banner Image">
-</div>
-
-
-
-<div class="section">
-  <h1>Physics-IQ × Perception Test Challenge</h1>
-  <p style="text-align:center;">
-    We’re excited to be featured as a guest challenge at the <strong>Perception Test Workshop @ ICCV 2025</strong> in Honolulu! <br><br>
-    The <strong>Physics-IQ Challenge</strong> invites you to test the physical reasoning abilities of your <em>image-to-video models</em>—can they distinguish what’s physically plausible? Explore the agenda and learn how our benchmark is pushing the boundaries of physical understanding in video generation.
-  </p>
-
-  <div class="button-row">
-    <a href="https://perception-test-challenge.github.io/" class="btn" target="_blank">Visit Perception Test Site</a>
-    <a href="https://physics-iq.github.io/" class="btn" target="_blank">Physics-IQ Home</a>
-    <a href="https://github.com/google-deepmind/physics-IQ-benchmark" class="btn" target="_blank">Physics-IQ Code</a>
+  <div class="banner-wrapper">
+    <img class="banner" src="./challenge_teaser.png" alt="Banner Image">
   </div>
-</div>
 
-    <div class="section">
+  <div class="section">
+    <h1>Physics-IQ × Perception Test Challenge</h1>
+    <p style="text-align:center;">
+      We’re excited to be featured as a guest challenge at the <strong>Perception Test Workshop @ ICCV 2025</strong> in Honolulu! <br><br>
+      The <strong>Physics-IQ Challenge</strong> invites you to test the physical reasoning abilities of your <em>image-to-video models</em>—can they distinguish what’s physically plausible?
+    </p>
+
+    <div class="button-row">
+      <a href="https://perception-test-challenge.github.io/" class="btn" target="_blank">Visit Perception Test Site</a>
+      <a href="https://physics-iq.github.io/" class="btn" target="_blank">Physics-IQ Home</a>
+      <a href="https://github.com/google-deepmind/physics-IQ-benchmark" class="btn" target="_blank">Physics-IQ Code</a>
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Speakers</h2>
     <div class="speakers">
       <div class="speaker">
@@ -222,25 +204,23 @@
     </ul>
   </div>
 
-
-<div class="section agenda">
-  <h2>Workshop Agenda</h2>
-  <ul>
-    <li>09:00 - 09:10 Welcome and introduction (Joao Carreira)</li>
-    <li>09:10 - 09:40 Perception Test overview (Viorica Patraucean)</li>
-    <li>09:40 - 10:10 Keynote (Ali Farhadi)</li>
-    <li>10:10 - 10:40 Coffee break</li>
-    <li>10:40 - 10:50 Challenges overview and winner announcement (Joe Heyward)</li>
-    <li>10:50 - 11:35 Oral presentations from the challenge winners</li>
-    <li>11:35 - 12:05 Keynote (Philipp Krähenbühl)</li>
-    <li>12:05 - 12:30 Panel discussion</li>
-    <li>12:30 - 14:00 Lunch break</li>
-    <li>14:00 - 15:10 KiVA Guest Track (Keynote: Alison Gopnik)</li>
-    <li>15:10 - 15:30 Coffee break</li>
-    <li>15:30 - 17:00 Physics-IQ Guest Track (Keynote: Philip Isola) </li>
-  </ul>
-</div>
-
+  <div class="section agenda">
+    <h2>Workshop Agenda</h2>
+    <ul>
+      <li>09:00 - 09:10 Welcome and introduction (Joao Carreira)</li>
+      <li>09:10 - 09:40 Perception Test overview (Viorica Patraucean)</li>
+      <li>09:40 - 10:10 Keynote (Ali Farhadi)</li>
+      <li>10:10 - 10:40 Coffee break</li>
+      <li>10:40 - 10:50 Challenges overview and winner announcement (Joe Heyward)</li>
+      <li>10:50 - 11:35 Oral presentations from the challenge winners</li>
+      <li>11:35 - 12:05 Keynote (Philipp Krähenbühl)</li>
+      <li>12:05 - 12:30 Panel discussion</li>
+      <li>12:30 - 14:00 Lunch break</li>
+      <li>14:00 - 15:10 KiVA Guest Track (Keynote: Alison Gopnik)</li>
+      <li>15:10 - 15:30 Coffee break</li>
+      <li>15:30 - 17:00 Physics-IQ Guest Track (Keynote: Phillip Isola)</li>
+    </ul>
+  </div>
 
   <div class="section">
     <h2>Organizers</h2>
@@ -272,54 +252,37 @@
     &copy; 2025 Physics-IQ Benchmark Team — All Rights Reserved
   </footer>
 
-
-<div id="tsparticles"></div>
-
-<style>
-#tsparticles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
-<script>
-  tsParticles.load("tsparticles", {
-    fullScreen: { enable: false },
-    background: { color: "#fefefe" },
-    particles: {
-      number: { value: 60 },
-      size: { value: 4 },
-      move: { enable: true, speed: 1 },
-      shape: { type: "circle" },
-      opacity: { value: 0.5 },
-      color: { value: "#1a73e8" },
-      links: {
-        enable: true,
-        distance: 150,
-        color: "#1a73e8",
-        opacity: 0.4
-      }
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "repulse" },
-        onClick: { enable: true, mode: "push" }
+  <!-- tsParticles Config -->
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "#fefefe" },
+      particles: {
+        number: { value: 60 },
+        size: { value: 4 },
+        move: { enable: true, speed: 1 },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        color: { value: "#1a73e8" },
+        links: {
+          enable: true,
+          distance: 150,
+          color: "#1a73e8",
+          opacity: 0.4
+        }
       },
-      modes: {
-        repulse: { distance: 100 },
-        push: { quantity: 4 }
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { quantity: 4 }
+        }
       }
-    }
-  }).then(() => console.log("Particles loaded"));
-</script>
+    });
+  </script>
 
-
-  
 </body>
 </html>
