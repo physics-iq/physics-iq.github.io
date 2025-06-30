@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/loaders/GLTFLoader.js"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Physics-IQ Guest Challenge @ ICCV 2025</title>
@@ -44,6 +47,16 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      pointer-events: none;
+    }
+
+    #duck-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
       pointer-events: none;
     }
 
@@ -147,6 +160,7 @@
 </head>
 <body>
 
+  <canvas id="duck-canvas"></canvas>
   <div id="tsparticles"></div>
 
   <h1>Physics-IQ Challenge @ ICCV 2025</h1>
@@ -281,6 +295,56 @@
           push: { quantity: 4 }
         }
       }
+    });
+  </script>
+
+  <!-- Duck Animation -->
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById("duck-canvas"),
+      alpha: true,
+      antialias: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(0, 10, 10);
+    scene.add(light);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambient);
+
+    let duck;
+    const loader = new THREE.GLTFLoader();
+    loader.load('assets/duck.glb', function (gltf) {
+      duck = gltf.scene;
+      duck.scale.set(1.5, 1.5, 1.5);
+      duck.position.y = 0;
+      scene.add(duck);
+    });
+
+    camera.position.z = 5;
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (duck) {
+        const t = clock.getElapsedTime();
+        duck.position.y = Math.abs(Math.sin(t * 2)) * 1.5;
+        duck.rotation.y += 0.01;
+      }
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
 
