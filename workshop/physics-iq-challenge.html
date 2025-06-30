@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- ✅ Three.js v0.149 (last version that works with old GLTFLoader) -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/examples/js/loaders/GLTFLoader.js"></script>
+  <!-- ✅ Load Three.js v0.149.0 and GLTFLoader -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/examples/js/loaders/GLTFLoader.js"></script>
 
+  <!-- ✅ tsParticles (old version with global support) -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -161,9 +163,11 @@
 </head>
 <body>
 
+  <!-- Background Canvases -->
   <canvas id="duck-canvas"></canvas>
   <div id="tsparticles"></div>
 
+  <!-- Main Content -->
   <h1>Physics-IQ Challenge @ ICCV 2025</h1>
 
   <div class="banner-wrapper">
@@ -267,7 +271,7 @@
     &copy; 2025 Physics-IQ Benchmark Team — All Rights Reserved
   </footer>
 
-  <!-- tsParticles Config -->
+  <!-- ✅ tsParticles Background -->
   <script>
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
@@ -299,10 +303,12 @@
     });
   </script>
 
-  <!-- Duck Animation -->
+  <!-- ✅ Duck Loader -->
   <script>
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+
     const renderer = new THREE.WebGLRenderer({
       canvas: document.getElementById("duck-canvas"),
       alpha: true,
@@ -314,22 +320,17 @@
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(0, 10, 10);
     scene.add(light);
-
-    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
-    scene.add(ambient);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
     let duck;
     const loader = new THREE.GLTFLoader();
     loader.load('assets/duck.glb', function (gltf) {
       duck = gltf.scene;
-      duck.scale.set(1.5, 1.5, 1.5);
-      duck.position.y = 0;
+      duck.scale.set(2, 2, 2);
       scene.add(duck);
     });
 
-    camera.position.z = 5;
     const clock = new THREE.Clock();
-
     function animate() {
       requestAnimationFrame(animate);
       if (duck) {
