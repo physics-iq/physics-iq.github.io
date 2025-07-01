@@ -272,12 +272,15 @@
   </footer>
 
   <!-- ✅ tsParticles Background -->
-  <script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const isMobile = window.innerWidth < 768;
+
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
       background: { color: "#fefefe" },
       particles: {
-        number: { value: 60 },
+        number: { value: isMobile ? 20 : 60 }, // ↓ less particles on mobile
         size: { value: 4 },
         move: { enable: true, speed: 1 },
         shape: { type: "circle" },
@@ -300,8 +303,10 @@
           push: { quantity: 4 }
         }
       }
-    });
-  </script>
+    }).then(() => console.log("Particles loaded"));
+  });
+</script>
+
 
   <!-- ✅ Duck Loader -->
   <script>
