@@ -182,37 +182,54 @@
     </p>
 
     <div class="button-row">
+      <a href="https://eval.ai/web/challenges/challenge-page/2546" class="btn" target="_blank">Challenege Submission Eval.ai</a>
       <a href="https://perception-test-challenge.github.io/" class="btn" target="_blank">Visit Perception Test Site</a>
       <a href="https://physics-iq.github.io/" class="btn" target="_blank">Physics-IQ Home</a>
       <a href="https://github.com/google-deepmind/physics-IQ-benchmark" class="btn" target="_blank">Physics-IQ Code</a>
     </div>
   </div>
 
-  <div class="section">
-    <h2>Speakers</h2>
-    <div class="speakers">
-      <div class="speaker">
-        <img src="assets/ali.jpeg" alt="">
-        <div><a href="https://www.cs.washington.edu/people/faculty/ali-farhadi/" target="_blank">Ali Farhadi</a></div>
-        <small>University of Washington</small>
-      </div>
-      <div class="speaker">
-        <img src="assets/Alison.jpg" alt="">
-        <div><a href="https://psychology.berkeley.edu/people/alison-gopnik" target="_blank">Alison Gopnik</a></div>
-        <small>UC Berkeley</small>
-      </div>
-      <div class="speaker">
-        <img src="assets/philipp.jpg" alt="">
-        <div><a href="https://www.philkr.net/" target="_blank">Philipp Krähenbühl</a></div>
-        <small>University of Texas at Austin</small>
-      </div>
-      <div class="speaker">
-        <img src="assets/PhillipIsola.jpeg" alt="">
-        <div><a href="https://web.mit.edu/phillipi/" target="_blank">Phillip Isola</a></div>
-        <small>MIT</small>
-      </div>
-    </div>
-  </div>
+<div class="section agenda">
+  <h2>Workshop Agenda</h2>
+  <ul>
+    <li>09:00 - 09:10 Welcome and introduction (Joao Carreira)</li>
+    <li>09:10 - 09:40 Perception Test overview (Viorica Patraucean)</li>
+    <li>09:40 - 10:10 Keynote (Ali Farhadi)</li>
+    <li>10:10 - 10:40 Coffee break</li>
+    <li>10:40 - 10:50 Challenges overview and winner announcement (Joe Heyward)</li>
+    <li>10:50 - 11:35 Oral presentations from the challenge winners</li>
+    <li>11:35 - 12:05 Keynote (Philipp Krähenbühl)</li>
+    <li>12:05 - 12:30 Panel discussion</li>
+    <li>12:30 - 14:00 Lunch break</li>
+    <li>14:00 - 15:10 KiVA Guest Track (Keynote: Alison Gopnik)</li>
+    <li>15:10 - 15:30 Coffee break</li>
+
+    <!-- Dropdown header -->
+    <li>
+      <a href="#" onclick="toggleDropdown('physics-iq-details'); return false;">
+        <strong>15:30 - 17:00 Physics-IQ Guest Track (Click to expand)</strong>
+      </a>
+      <ul id="physics-iq-details" style="display: none; margin-top: 8px;">
+        <li>15:30 - 16:05 Keynote and Q/A by Phillip Isola</li>
+        <li>16:05 - 16:20 Physics-IQ Challenge Overview &amp; Winner Announcement</li>
+        <li>16:20 - 17:00 Presentations by Top Three Winners</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<!-- Simple JavaScript for toggle -->
+<script>
+  function toggleDropdown(id) {
+    const el = document.getElementById(id);
+    if (el.style.display === "none") {
+      el.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
+  }
+</script>
+
 
   <div class="section agenda">
     <h2>Challenge Timeline</h2>
