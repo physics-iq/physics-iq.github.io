@@ -537,15 +537,56 @@ body {
 </div>
 
 <script>
+function normalizeModelName(name) {
+  return name
+    .replace(/\[(.*?)\]\((.*?)\)/, "$1")
+    .trim()
+    .toLowerCase();
+}
+
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+function colorFromName(name) {
+  const hue = hashString(name) % 360;
+  return `hsl(${hue}, 65%, 45%)`;
+}
+
+function getBarColor(modelName, inputType) {
+  const normalized = `${normalizeModelName(modelName)} (${inputType.trim().toLowerCase()})`;
+
+  const fixedColors = {
+    "videopoet (multiframe (v2v))": "#CC5500",
+    "lumiere (multiframe (v2v))": "#1C69A7",
+    "runway gen 3 (i2v)": "#2ca02c",
+    "videopoet (i2v)": "#FF7F0E",
+    "lumiere (i2v)": "#17BECF",
+    "stable video diffusion (i2v)": "#9467BD",
+    "pika (i2v)": "#FFD700",
+    "pika 1.0 (i2v)": "#FFD700",
+    "sora (i2v)": "#ff0606"
+  };
+
+  return fixedColors[normalized] || colorFromName(normalized);
+}
+
 async function loadLeaderboard() {
   try {
     const url = "https://raw.githubusercontent.com/google-deepmind/physics-IQ-benchmark/main/README.md";
     const res = await fetch(url);
     const text = await res.text();
 
-    // Grab the leaderboard table lines
     const lines = text.split("\n");
-    const startIdx = lines.findIndex(line => line.includes("| **#** | **Model** | **input type** | **Physics-IQ score** |"));
+    const startIdx = lines.findIndex(line =>
+      line.includes("| **#** | **Model** | **input type** | **Physics-IQ score** |")
+    );
+
     if (startIdx === -1) {
       throw new Error("Could not find leaderboard table in README.");
     }
@@ -564,18 +605,20 @@ async function loadLeaderboard() {
       const rawInput = cols[3] || "";
       const rawScore = cols[4] || "";
 
-      // Convert markdown link [Name](url) -> clickable HTML link
+      let modelText = rawModel;
       let modelHtml = rawModel;
+
       const linkMatch = rawModel.match(/\[(.*?)\]\((.*?)\)/);
       if (linkMatch) {
+        modelText = linkMatch[1];
         modelHtml = `<a href="${linkMatch[2]}" target="_blank" rel="noopener noreferrer">${linkMatch[1]}</a>`;
       }
 
-      // Extract first numeric score from strings like "**62.6 %** :1st_place_medal:"
       const scoreMatch = rawScore.match(/(\d+(\.\d+)?)/);
       const score = scoreMatch ? parseFloat(scoreMatch[1]) : 0;
 
       return {
+        modelText,
         modelHtml,
         input: rawInput,
         score
@@ -586,12 +629,15 @@ async function loadLeaderboard() {
 
     tbody.innerHTML = rows.map((row, i) => {
       const medal = i === 0 ? " 🥇" : i === 1 ? " 🥈" : i === 2 ? " 🥉" : "";
+      const barColor = getBarColor(row.modelText, row.input);
+      const labelColor = barColor.toLowerCase() === "#ffd700" ? "black" : "white";
+
       return `
         <tr>
           <td>${row.modelHtml} (${row.input})${medal}</td>
           <td>
             <div class="progress">
-              <div class="progress-bar" style="width:${row.score}%; background-color:#1C69A7;"></div>
+              <div class="progress-bar" style="width:${row.score}%; background-color:${barColor}; color:${labelColor};"></div>
               <div class="progress-label">${row.score.toFixed(1)}%</div>
             </div>
           </td>
