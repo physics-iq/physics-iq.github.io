@@ -518,92 +518,52 @@ body {
 
 
        <!-- Leaderboard -->
-<div class="leaderboard">
-  <h2>Leaderboard 🥇</h2>
-  <table class="leaderboard-table">
-    <thead>
-      <tr>
-        <th>Model</th>
-        <th>Physics IQ Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>VideoPoet (multiframe) <span style="color:gold;">&#x1F3C6;</span></td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:29.5%; background-color:#CC5500;"></div>
-            <div class="progress-label">29.5%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-       <td>Lumiere (multiframe)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:23.0%; background-color:#1C69A7;"></div>
-            <div class="progress-label">23.0%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Runway Gen 3 (i2v)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:22.8%; background-color:#2ca02c;"></div>
-            <div class="progress-label">22.8%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>VideoPoet (i2v)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:20.3%; background-color:#FF7F0E;"></div>
-            <div class="progress-label">20.3%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Lumiere (i2v)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:19.0%; background-color:#17BECF;"></div>
-            <div class="progress-label">19.0%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Stable Video Diffusion (i2v)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:14.8%; background-color:#9467BD;"></div>
-            <div class="progress-label">14.8%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Pika 1.0 (i2v)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:13.0%; background-color:#FFD700; color:black;"></div>
-            <div class="progress-label">13.0%</div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Sora (i2v)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:10.0%; background-color:#ff0606;"></div>
-            <div class="progress-label">10.0%</div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<tbody id="leaderboard-body"></tbody>
+<script>
+async function loadLeaderboard() {
+  const url = "https://raw.githubusercontent.com/google-deepmind/physics-IQ-benchmark/main/README.md";
+  const res = await fetch(url);
+  const text = await res.text();
 
+  // Extract only the leaderboard table
+  const tableMatch = text.match(/\|\s\*\*#\*\*[\s\S]*?\n\n/);
+  if (!tableMatch) return;
+
+  const lines = tableMatch[0]
+    .split("\n")
+    .filter(l => l.startsWith("|") && !l.includes("---") && !l.includes("**#**"));
+
+  const rows = lines.map(line => {
+    const cols = line.split("|").map(c => c.trim());
+    return {
+      model: cols[2],
+      input: cols[3],
+      score: parseFloat(cols[4]),
+      rank: parseInt(cols[1])
+    };
+  });
+
+  const tbody = document.getElementById("leaderboard-body");
+
+  tbody.innerHTML = rows.map((row, i) => {
+    const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "";
+
+    return `
+      <tr>
+        <td>${row.model} (${row.input}) ${medal}</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" style="width:${row.score}%; background-color:#1C69A7;"></div>
+            <div class="progress-label">${row.score}%</div>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+loadLeaderboard();
+</script>
 
   <!-- Samples Section -->
   <div class="section-wrapper">
