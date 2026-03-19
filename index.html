@@ -518,48 +518,94 @@ body {
 
 
        <!-- Leaderboard -->
-<tbody id="leaderboard-body"></tbody>
+<!-- Leaderboard -->
+<div class="leaderboard">
+  <h2>Leaderboard 🥇</h2>
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Physics IQ Score</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboard-body">
+      <tr>
+        <td colspan="2">Loading leaderboard...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <script>
 async function loadLeaderboard() {
-  const url = "https://raw.githubusercontent.com/google-deepmind/physics-IQ-benchmark/main/README.md";
-  const res = await fetch(url);
-  const text = await res.text();
+  try {
+    const url = "https://raw.githubusercontent.com/google-deepmind/physics-IQ-benchmark/main/README.md";
+    const res = await fetch(url);
+    const text = await res.text();
 
-  // Extract only the leaderboard table
-  const tableMatch = text.match(/\|\s\*\*#\*\*[\s\S]*?\n\n/);
-  if (!tableMatch) return;
+    // Grab the leaderboard table lines
+    const lines = text.split("\n");
+    const startIdx = lines.findIndex(line => line.includes("| **#** | **Model** | **input type** | **Physics-IQ score** |"));
+    if (startIdx === -1) {
+      throw new Error("Could not find leaderboard table in README.");
+    }
 
-  const lines = tableMatch[0]
-    .split("\n")
-    .filter(l => l.startsWith("|") && !l.includes("---") && !l.includes("**#**"));
+    const tableLines = [];
+    for (let i = startIdx + 2; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line.startsWith("|")) break;
+      tableLines.push(line);
+    }
 
-  const rows = lines.map(line => {
-    const cols = line.split("|").map(c => c.trim());
-    return {
-      model: cols[2],
-      input: cols[3],
-      score: parseFloat(cols[4]),
-      rank: parseInt(cols[1])
-    };
-  });
+    const rows = tableLines.map(line => {
+      const cols = line.split("|").map(c => c.trim());
 
-  const tbody = document.getElementById("leaderboard-body");
+      const rawModel = cols[2] || "";
+      const rawInput = cols[3] || "";
+      const rawScore = cols[4] || "";
 
-  tbody.innerHTML = rows.map((row, i) => {
-    const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "";
+      // Convert markdown link [Name](url) -> clickable HTML link
+      let modelHtml = rawModel;
+      const linkMatch = rawModel.match(/\[(.*?)\]\((.*?)\)/);
+      if (linkMatch) {
+        modelHtml = `<a href="${linkMatch[2]}" target="_blank" rel="noopener noreferrer">${linkMatch[1]}</a>`;
+      }
 
-    return `
+      // Extract first numeric score from strings like "**62.6 %** :1st_place_medal:"
+      const scoreMatch = rawScore.match(/(\d+(\.\d+)?)/);
+      const score = scoreMatch ? parseFloat(scoreMatch[1]) : 0;
+
+      return {
+        modelHtml,
+        input: rawInput,
+        score
+      };
+    });
+
+    const tbody = document.getElementById("leaderboard-body");
+
+    tbody.innerHTML = rows.map((row, i) => {
+      const medal = i === 0 ? " 🥇" : i === 1 ? " 🥈" : i === 2 ? " 🥉" : "";
+      return `
+        <tr>
+          <td>${row.modelHtml} (${row.input})${medal}</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width:${row.score}%; background-color:#1C69A7;"></div>
+              <div class="progress-label">${row.score.toFixed(1)}%</div>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join("");
+  } catch (err) {
+    document.getElementById("leaderboard-body").innerHTML = `
       <tr>
-        <td>${row.model} (${row.input}) ${medal}</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" style="width:${row.score}%; background-color:#1C69A7;"></div>
-            <div class="progress-label">${row.score}%</div>
-          </div>
-        </td>
+        <td colspan="2">Failed to load leaderboard.</td>
       </tr>
     `;
-  }).join("");
+    console.error(err);
+  }
 }
 
 loadLeaderboard();
