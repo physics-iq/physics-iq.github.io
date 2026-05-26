@@ -21,7 +21,7 @@
     html, body {
   margin: 0;
   padding: 0;
-  height: 100%; 
+  height: 100%;
 }
 .affiliations span {
     display: inline; /* Ensure no additional spacing is introduced */
@@ -93,9 +93,9 @@ body {
   max-width: 800px;
   margin: 0 auto;
   background: #fff; /* Change to white */
-  min-height: 100vh; 
-  position: relative; 
-  z-index: 1; 
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
 }
     .pdf-container {
@@ -130,7 +130,7 @@ body {
     video {
       width: 100%;
       height: auto;
-      border-radius: 0.75rem; 
+      border-radius: 0.75rem;
     }
 
     header {
@@ -236,8 +236,8 @@ body {
       border-bottom: none;
     }
 
-    /* 
-       Updated repeating pattern to 10% chunks, e.g. 
+    /*
+       Updated repeating pattern to 10% chunks, e.g.
        10% shading + 10% gap => each chunk is 20% wide,
        or do 10% shading, 10% gap => total 20% repeating length.
 
@@ -397,15 +397,15 @@ body {
     <header>
       <h1>Physics IQ Benchmark:<br>Do generative video models understand physical&nbsp;principles?</h1>
       <div class="authors">
-          <a href="https://sam-motamed.github.io/" target="_blank">Saman Motamed</a><sup>1,*</sup>, 
-          <a href="https://scholar.google.com/citations?user=vEZUEOQAAAAJ&hl=en" target="_blank">Laura Culp</a><sup>2</sup>, 
-          <a href="https://scholar.google.com/citations?user=IrixA8MAAAAJ&hl=en" target="_blank">Kevin Swersky</a><sup>2</sup>, 
-          <a href="https://priyankjaini.github.io/" target="_blank">Priyank Jaini</a><sup>2,†</sup>, 
+          <a href="https://sam-motamed.github.io/" target="_blank">Saman Motamed</a><sup>1,*</sup>,
+          <a href="https://scholar.google.com/citations?user=vEZUEOQAAAAJ&hl=en" target="_blank">Laura Culp</a><sup>2</sup>,
+          <a href="https://scholar.google.com/citations?user=IrixA8MAAAAJ&hl=en" target="_blank">Kevin Swersky</a><sup>2</sup>,
+          <a href="https://priyankjaini.github.io/" target="_blank">Priyank Jaini</a><sup>2,†</sup>,
           <a href="https://robertgeirhos.com/" target="_blank">Robert Geirhos</a><sup>2,†</sup>
       </div>
 <div class="affiliations">
   <strong>1:</strong> INSAIT, Sofia University &nbsp;&nbsp;
-  <strong>2:</strong> 
+  <strong>2:</strong>
   <span class="blue">G</span><span class="red">o</span><span class="yellow">o</span><span class="blue">g</span><span class="green">l</span><span class="red">e</span>
   <span class="blue">D</span><span class="blue">e</span><span class="blue">e</span><span class="blue">p</span><span class="blue">M</span><span class="blue">i</span><span class="blue">n</span><span class="blue">d</span>
 </div>
@@ -443,8 +443,8 @@ body {
     <div class="section-wrapper">
       <h2>TL;DR</h2>
       <p>
-        We develop the <strong>Physics-IQ benchmark and score</strong>, which reveals that current generative video models lack physical understanding despite sometimes achieving visual realism. 
-        Use our benchmark and dataset to assess your video model's physics understanding! 
+        We develop the <strong>Physics-IQ benchmark and score</strong>, which reveals that current generative video models lack physical understanding despite sometimes achieving visual realism.
+        Use our benchmark and dataset to assess your video model's physics understanding!
       </p>
     </div>
 
@@ -627,8 +627,12 @@ async function loadLeaderboard() {
 
     const tbody = document.getElementById("leaderboard-body");
 
-    tbody.innerHTML = rows.map((row, i) => {
-      const medal = i === 0 ? " 🥇" : i === 1 ? " 🥈" : i === 2 ? " 🥉" : "";
+    const rankByInput = {};
+    tbody.innerHTML = rows.map((row) => {
+      const key = row.input.trim().toLowerCase();
+      rankByInput[key] = (rankByInput[key] ?? -1) + 1;
+      const rank = rankByInput[key];
+      const medal = rank === 0 ? " 🥇" : rank === 1 ? " 🥈" : rank === 2 ? " 🥉" : "";
       const barColor = getBarColor(row.modelText, row.input);
       const labelColor = barColor.toLowerCase() === "#ffd700" ? "black" : "white";
 
